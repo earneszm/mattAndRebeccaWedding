@@ -5,7 +5,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 
-namespace TestingAppServices.Utilities.CustomAuth
+namespace MattAndRebeccaWedding.Utilities.CustomAuth
 {
     public class CustomPrincipal : ICustomPrincipal
     {

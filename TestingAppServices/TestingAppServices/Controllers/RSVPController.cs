@@ -4,10 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TestingAppServices.Models;
-using TestingAppServices.Utilities.CustomAuth;
+using MattAndRebeccaWedding.Models;
+using MattAndRebeccaWedding.Utilities.CustomAuth;
 
-namespace TestingAppServices.Controllers
+namespace MattAndRebeccaWedding.Controllers
 {
     public class RSVPController : BaseController
     {

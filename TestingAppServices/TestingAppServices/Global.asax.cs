@@ -7,9 +7,9 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Script.Serialization;
 using System.Web.Security;
-using TestingAppServices.Utilities.CustomAuth;
+using MattAndRebeccaWedding.Utilities.CustomAuth;
 
-namespace TestingAppServices
+namespace MattAndRebeccaWedding
 {
     public class MvcApplication : System.Web.HttpApplication
     {

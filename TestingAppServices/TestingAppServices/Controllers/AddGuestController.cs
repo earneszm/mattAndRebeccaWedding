@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TestingAppServices.Models;
-using TestingAppServices.Utilities;
+using MattAndRebeccaWedding.Models;
+using MattAndRebeccaWedding.Utilities;
 
-namespace TestingAppServices.Controllers
+namespace MattAndRebeccaWedding.Controllers
 {
     public class AddGuestController : Controller
     {

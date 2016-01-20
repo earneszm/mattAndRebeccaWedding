@@ -5,9 +5,9 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Web;
-using TestingAppServices.Models;
+using MattAndRebeccaWedding.Models;
 
-namespace TestingAppServices
+namespace MattAndRebeccaWedding
 {
     public class DAL
     {

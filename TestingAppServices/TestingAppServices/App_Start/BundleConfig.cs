@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace TestingAppServices
+namespace MattAndRebeccaWedding
 {
     public class BundleConfig
     {

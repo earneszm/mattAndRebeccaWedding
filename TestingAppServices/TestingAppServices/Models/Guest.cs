@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace TestingAppServices.Models
+namespace MattAndRebeccaWedding.Models
 {
     public class Guest
     {
