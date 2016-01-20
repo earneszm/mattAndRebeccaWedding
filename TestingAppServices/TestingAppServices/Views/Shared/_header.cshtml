@@ -1,0 +1,62 @@
+﻿
+<header>
+    <div class="headerTopBar">
+
+    </div>
+    <div class="headerBanner container">
+        <div class="row" style="text-align:center; padding-top:10px;">
+            <img src="~/Content/Images/dark-one-hi.png" style="height:35px; width:80%;" />
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <img src="~/Content/Images/ring.jpeg" style="height:120px;width:120px;" />
+            </div>
+            <div class="col-xs-8" style="text-align:center; padding-top:15px;">
+                <h1>Matt and Rebecca Get Hitched!</h1>
+            </div>
+        </div>
+        <div class="container">
+            <ul class="nav nav-pills nav-tabs-justified col-xs-12">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Our Story", "OurStory", "OurStory")</li>
+                <li>@Html.ActionLink("Logistics", "Contact", "Home")</li>
+                <li>@Html.ActionLink("RSVP", "GuestRSVP", "RSVP")</li>
+                <li>@Html.ActionLink("Questions?", "Contact", "Home")</li>
+                @if (User != null && User.isAuthenticated)
+                {
+                    <li class="pull-right">@Html.ActionLink("Logout", "Logout", "Login")</li>
+                    <li class="pull-right">@Html.ActionLink("Admin", "Home", "Login")</li>
+
+                }
+                else
+                {
+                    <li class="pull-right">@Html.ActionLink("Login", "Login", "Login")</li>
+                }
+
+            </ul>
+        </div>
+    </div>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div>
+                    <img src="~/Content/Images/ring.jpeg" style="height:200px;width:200px;" />
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Matt and Rebecca", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Our Story", "About", "Home")</li>
+                        <li>@Html.ActionLink("Details", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+</header>

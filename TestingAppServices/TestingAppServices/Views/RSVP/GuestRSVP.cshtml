@@ -1,0 +1,60 @@
+﻿@model TestingAppServices.Models.Guest
+
+@{
+    ViewBag.Title = "GuestRSVP";
+}
+
+<h2>GuestRSVP</h2>
+
+<div id="validationDiv">
+    @if (!String.IsNullOrEmpty(ViewBag.SuccessMessage))
+    {
+        <label class="label label-success" style="font-size:1.4em">@ViewBag.SuccessMessage</label>
+                    <br />
+                    <br />
+    }
+    else if(!String.IsNullOrEmpty(ViewBag.FailureMessage))
+    {
+        <label class="label label-danger" style="font-size:1.4em">@ViewBag.FailureMessage</label>
+        <br />
+        <br />
+    }
+
+</div>
+
+
+
+<div class="well addGuestContent">
+
+    @using (Html.BeginForm("GuestRSVP", "RSVP", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-xs-2 col-sm-offset-2">
+                @Html.DisplayNameFor(model => Model.RsvpId)
+            </div>
+            <div class="col-xs-3">
+                @Html.TextBoxFor(model => Model.RsvpId, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2 col-sm-offset-2">
+                @Html.DisplayNameFor(model => Model.IsAttending)
+            </div>
+            <div class="col-xs-1">
+                @Html.CheckBoxFor(model => Model.IsAttending, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2 col-sm-offset-2">
+                @Html.DisplayNameFor(model => Model.CommentFromRSVP)
+            </div>
+            <div class="col-xs-3">
+                @Html.TextBoxFor(model => Model.CommentFromRSVP, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <input type="submit" value="Send RSVP" class="btn btn-primary" />
+    }
+</div>

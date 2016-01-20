@@ -1,0 +1,33 @@
+﻿@model TestingAppServices.Models.User
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<div class="well">
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    <div class="row">
+        <div>
+            @Html.DisplayText("User Name: ")
+        </div>
+        <div>
+            @Html.TextBoxFor(model => model.UserName)
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            @Html.DisplayText("Password: ")
+        </div>
+        <div>
+            @Html.TextBoxFor(model => model.UserPassword)
+        </div>
+    </div>
+    <input type="submit" value="Login" class="btn btn-primary" />
+}
+</div>
+

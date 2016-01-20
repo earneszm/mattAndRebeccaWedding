@@ -1,0 +1,47 @@
+﻿@model TestingAppServices.Models.Guest
+
+@{string rowColor = "rowNormalEven";
+
+    if (Model.HasRSVPed)
+    {
+        if (Model.IsAttending == false)
+        {
+            rowColor = "rowNotAttending"; ;
+        }
+        else
+        {
+            rowColor = "rowAttending";
+        }
+    }
+    else
+    {
+        if (Model.GuestID % 2 == 1)
+        {
+            rowColor = "rowNormalOdd";
+        }
+    }
+
+<div class="row @rowColor">
+    <div class="col-xs-1">
+        @Html.DisplayTextFor(model => model.GuestID)
+    </div>
+    <div class="col-xs-2">
+        @Html.DisplayTextFor(model => model.Name)
+    </div>
+    <div class="col-xs-2">
+        @Html.DisplayTextFor(model => model.Email)
+    </div>
+    <div class="col-xs-2">
+        @Html.DisplayTextFor(model => model.IsAttendingText)
+    </div>
+    <div class="col-xs-1">
+       @Html.DisplayTextFor(model => model.HasRSVPedText)
+    </div>
+    <div class="col-xs-3">
+       @Html.DisplayTextFor(model => model.CommentForEmailSent)
+    </div>
+    <div class="col-xs-1">
+        @Html.DisplayTextFor(model => model.RsvpId)
+    </div>
+</div>
+    }

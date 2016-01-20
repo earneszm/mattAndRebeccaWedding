@@ -1,0 +1,40 @@
+﻿@model TestingAppServices.Models.Guest
+
+@{
+    ViewBag.Title = "AddGuest";
+}
+
+<h2>Add Guest</h2>
+
+<div class="well addGuestContent">
+
+    @using (Html.BeginForm("AddGuest", "AddGuest", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-xs-2 col-sm-offset-2">
+                @Html.DisplayNameFor(model => Model.Name)
+            </div>
+            <div class="col-xs-3">
+                @Html.TextBoxFor(model => Model.Name, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 col-sm-offset-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </div>
+            <div class="col-xs-3">
+                @Html.TextBoxFor(model => Model.Email, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 col-sm-offset-2">
+                @Html.DisplayNameFor(model => model.CommentForEmailSent)
+            </div>
+            <div class="col-xs-4">
+                @Html.TextAreaFor(model => Model.CommentForEmailSent, htmlAttributes: new { @class = "form-control", @style = "width: 650px; height:100px;" })
+            </div>
+        </div>
+
+        <input type="submit" value="Add Guest" class="btn btn-primary" />
+    }
+</div>
