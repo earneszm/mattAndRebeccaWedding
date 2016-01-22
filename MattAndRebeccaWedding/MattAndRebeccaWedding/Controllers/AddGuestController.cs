@@ -32,9 +32,18 @@ namespace MattAndRebeccaWedding.Controllers
                 }
             }
             guest.RsvpId = newID;
-            DAL.InsertGuest(SqlStatements.InsertNewGuestSQL(), SqlStatements.InsertOrUpdateGuestParameters(guest));
+            if(DAL.InsertOrUpdate(SqlStatements.InsertNewGuestSQL(), SqlStatements.InsertOrUpdateGuestParameters(guest)) == 1)
+            {
+                ViewBag.SuccessMessage = "Guest successfully added: " + guest.Name;
+                return View();
+            }
+            else
+            {
+                ViewBag.FailureMessage = "Failed to add guest! Contact Zach!";
+                return View(guest);
+            }
 
-            return RedirectToAction("RSVP", "RSVP");
+            
         }
     }
 }

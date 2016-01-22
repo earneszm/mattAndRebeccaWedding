@@ -23,14 +23,18 @@ namespace MattAndRebeccaWedding.Models
         [Display(Name = "Attending?")]
         public bool IsAttending { get; set; }
 
+        public int DisplayNum { get; set; }
+        public int NumPeopleAllowed { get; set; }
+        public int NumPeopleAttending { get; set; }
+
         public string IsAttendingText
         {
             get
             {
                 if (HasRSVPed == false)
-                    return "Waiting on RSVP";
+                    return "--";
                 else if (IsAttending == true)
-                    return "Yes!";
+                    return NumPeopleAttending + "/" + NumPeopleAllowed + " attending";
                 else
                     return "Not Attending";
             }
@@ -74,6 +78,8 @@ namespace MattAndRebeccaWedding.Models
             CommentForEmailSent = dr["CommentForEmailSent"].ToString();
             CommentFromRSVP = dr["CommentFromRSVP"].ToString();
             RsvpId = dr["RSVP_ID"].ToString();
+            NumPeopleAllowed = int.Parse(dr["NumPeopleAllowed"].ToString());
+            NumPeopleAttending = int.Parse(dr["NumPeopleAttending"].ToString());
         }
     }
 }

@@ -21,7 +21,7 @@ namespace MattAndRebeccaWedding.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
-            if (user.UserPassword == "test")
+            if (user.UserPassword == "test" && user.UserName == "test")
             {
 
                 CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();
@@ -48,6 +48,7 @@ namespace MattAndRebeccaWedding.Controllers
             }
             else
             {
+                ViewBag.FailureMessage = "Username and/or Password not valid.";
                 return View();
             }
         }

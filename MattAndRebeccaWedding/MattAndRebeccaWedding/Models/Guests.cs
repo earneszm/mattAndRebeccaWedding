@@ -10,14 +10,27 @@ namespace MattAndRebeccaWedding.Models
     {
         public List<Guest> guestList;
 
+        public int GuestsInvited { get; set; }
+        public int GuestsAttending { get; set; }
+        public int RSVPsTotal { get; set; }
+        public int RSVPsReceived { get; set; }
+
 
         public Guests(DataTable dtGuests)
         {
             guestList = new List<Guest>();
 
-            foreach(DataRow dr in dtGuests.Rows)
-            {
+            foreach (DataRow dr in dtGuests.Rows)
+            {                
                 guestList.Add(new Guest(dr));
+                GuestsInvited += guestList[guestList.Count - 1].NumPeopleAllowed;
+                GuestsAttending += guestList[guestList.Count - 1].NumPeopleAttending;
+
+                RSVPsTotal++;
+                if (guestList[guestList.Count - 1].HasRSVPed)
+                {
+                    RSVPsReceived++;
+                }                
             }
         }
     }

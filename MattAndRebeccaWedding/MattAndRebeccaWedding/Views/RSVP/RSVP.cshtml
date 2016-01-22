@@ -1,4 +1,4 @@
-﻿@model TestingAppServices.Models.Guests
+﻿@model MattAndRebeccaWedding.Models.Guests
 
 @{
     ViewBag.Title = "RSVP";
@@ -7,34 +7,75 @@
 <h2>RSVP</h2>
 
 <div class="well">
-    <div class="row">
-        <button type="button" class="btn btn-primary col-sm-offset-9" style="font-weight:bold;" onclick="location.href='@Url.Action("AddGuest", "AddGuest")'"><b>Add Guest</b></button>
+    @Html.Partial("_adminNavView")
+
+    <div class="row" id="guestStats">
+        <div class="col-xs-6" id="attendanceTotal">
+            <div class="row">
+                <div class="col-xs-10">
+                    <h4>Attendance Stats (including +1s):</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <span>Guests Invited: @Model.GuestsInvited</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <span>Guests Attending: @Model.GuestsAttending</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <span>Not Attending: @(@Model.GuestsInvited - Model.GuestsAttending)</span>
+                </div>
+            </div>            
+        </div>
+        <div class="col-xs-6">
+            <div class="row">
+                <div class="col-xs-8">
+                    <h4>RSVP Totals:</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <span>Total Invited Sent: @Model.RSVPsTotal</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <span>RSVPs Recevied: @Model.RSVPsReceived </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <span>Awaiting RSVP: @(Model.RSVPsTotal - Model.RSVPsReceived) </span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-1">
-            <h4>@Html.DisplayNameFor(model => model.guestList[0].GuestID)</h4>
-        </div>
-        <div class="col-xs-2">
-            <h4>@Html.DisplayNameFor(model => model.guestList[0].Name)</h4>
-        </div>
-        <div class="col-xs-2">
-            <h4>@Html.DisplayNameFor(model => model.guestList[0].Email)</h4>
-        </div>
-        <div class="col-xs-2">
-            <h4>@Html.DisplayNameFor(model => model.guestList[0].IsAttending)</h4>
-        </div>
-        <div class="col-xs-1">
-            <h4>@Html.DisplayNameFor(model => model.guestList[0].HasRSVPed)</h4>
-        </div>
-        <div class="col-xs-3">
-            <h4>@Html.DisplayNameFor(model => model.guestList[0].CommentForEmailSent)</h4>
-        </div>
-        <div class="col-xs-1">
-            <h4>@Html.DisplayNameFor(model => model.guestList[0].RsvpId)</h4>
-        </div>
+
+<div class="row text-center rsvpHeaders">
+    <div class="col-xs-1">
+        <h4>Count:</h4>
     </div>
-    @foreach (var item in Model.guestList)
-    {
+    <div class="col-xs-3">
+        <h4>@Html.DisplayNameFor(model => model.guestList[0].Name)</h4>
+    </div>
+    <div class="col-xs-3">
+        <h4>@Html.DisplayNameFor(model => model.guestList[0].Email)</h4>
+    </div>
+    <div class="col-xs-2">
+        <h4>@Html.DisplayNameFor(model => model.guestList[0].IsAttending)</h4>
+    </div>
+    <div class="col-xs-1">
+        <h4>@Html.DisplayNameFor(model => model.guestList[0].HasRSVPed)</h4>
+    </div>
+</div>
+@foreach (var item in Model.guestList)
+{
+    item.DisplayNum = Model.guestList.IndexOf(item) + 1;
     @Html.Partial("_guest", item);
-    }
+}
 </div>

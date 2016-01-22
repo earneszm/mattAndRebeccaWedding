@@ -1,4 +1,4 @@
-﻿@model TestingAppServices.Models.User
+﻿@model MattAndRebeccaWedding.Models.User
 
 @{
     ViewBag.Title = "Login";
@@ -6,28 +6,34 @@
 
 <h2>Login</h2>
 
+@if(!String.IsNullOrEmpty(ViewBag.FailureMessage))
+    {
+        <label class="label label-danger" style="font-size:1.4em">@ViewBag.FailureMessage</label>
+        <br />
+        <br />
+    }
+
 <div class="well">
 
 @using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
-    <div class="row">
-        <div>
-            @Html.DisplayText("User Name: ")
-        </div>
-        <div>
-            @Html.TextBoxFor(model => model.UserName)
+    <div class="row col-sm-offset-4">
+        <div class="col-xs-4">
+            @Html.TextBoxFor(model => model.UserName, htmlAttributes: new { @class = "form-control", @placeholder = "User Name" })
         </div>
     </div>
 
-    <div class="row">
-        <div>
-            @Html.DisplayText("Password: ")
-        </div>
-        <div>
-            @Html.TextBoxFor(model => model.UserPassword)
+    <br />
+
+    <div class="row col-sm-offset-4">
+        <div class="col-xs-4">
+            @Html.PasswordFor(model => model.UserPassword, htmlAttributes: new { @class = "form-control", @placeholder = "Password" })
         </div>
     </div>
-    <input type="submit" value="Login" class="btn btn-primary" />
+
+    <br />
+
+    <input type="submit" value="Login" class="btn btn-primary col-sm-offset-6" />
 }
 </div>
 

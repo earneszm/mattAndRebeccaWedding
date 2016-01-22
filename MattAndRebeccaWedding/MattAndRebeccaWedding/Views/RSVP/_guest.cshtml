@@ -1,4 +1,4 @@
-﻿@model TestingAppServices.Models.Guest
+﻿@model MattAndRebeccaWedding.Models.Guest
 
 @{string rowColor = "rowNormalEven";
 
@@ -21,27 +21,27 @@
         }
     }
 
-<div class="row @rowColor">
-    <div class="col-xs-1">
-        @Html.DisplayTextFor(model => model.GuestID)
+<div class="row rsvpGuestListRow @rowColor">
+    <div class="col-xs-1 vCenter">
+        @Html.DisplayTextFor(model => model.DisplayNum)
     </div>
-    <div class="col-xs-2">
+    <div class="col-xs-3 vCenter">
         @Html.DisplayTextFor(model => model.Name)
     </div>
-    <div class="col-xs-2">
+    <div class="col-xs-3 vCenter">
         @Html.DisplayTextFor(model => model.Email)
     </div>
-    <div class="col-xs-2">
+    <div class="col-xs-2 vCenter">
         @Html.DisplayTextFor(model => model.IsAttendingText)
     </div>
-    <div class="col-xs-1">
+    <div class="col-xs-1 vCenter">
        @Html.DisplayTextFor(model => model.HasRSVPedText)
     </div>
-    <div class="col-xs-3">
+    @*<div class="col-xs-3">
        @Html.DisplayTextFor(model => model.CommentForEmailSent)
-    </div>
-    <div class="col-xs-1">
-        @Html.DisplayTextFor(model => model.RsvpId)
+    </div>*@
+    <div class="col-xs-1 vCenter">
+        <button type="button" class="btn btn-primary col-sm-offset-9" onclick="location.href='@Url.Action("EditGuest", "EditGuest", new {guestID=Model.GuestID})'">Select</button>
     </div>
 </div>
     }

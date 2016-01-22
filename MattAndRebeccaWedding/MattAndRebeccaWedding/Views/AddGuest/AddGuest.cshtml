@@ -1,4 +1,4 @@
-﻿@model TestingAppServices.Models.Guest
+﻿@model MattAndRebeccaWedding.Models.Guest
 
 @{
     ViewBag.Title = "AddGuest";
@@ -6,7 +6,22 @@
 
 <h2>Add Guest</h2>
 
+@if (!String.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <label class="label label-success" style="font-size:1.4em">@ViewBag.SuccessMessage</label>
+    <br />
+    <br />
+}
+else if (!String.IsNullOrEmpty(ViewBag.FailureMessage))
+{
+    <label class="label label-danger" style="font-size:1.4em">@ViewBag.FailureMessage</label>
+    <br />
+    <br />
+}
+
 <div class="well addGuestContent">
+
+    @Html.Partial("_adminNavView")
 
     @using (Html.BeginForm("AddGuest", "AddGuest", FormMethod.Post))
     {
@@ -35,6 +50,6 @@
             </div>
         </div>
 
-        <input type="submit" value="Add Guest" class="btn btn-primary" />
+        <input type="submit" value="Add Guest" class="btn btn-primary col-sm-offset-6" />
     }
 </div>

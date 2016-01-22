@@ -64,7 +64,7 @@ namespace MattAndRebeccaWedding.Controllers
                         newGuest.HasRSVPed = true;
                         newGuest.IsAttending = guest.IsAttending;
                         newGuest.CommentFromRSVP = guest.CommentFromRSVP;
-                        DAL.InsertGuest(SqlStatements.UpdateNewGuestSQL(), SqlStatements.InsertOrUpdateGuestParameters(newGuest));
+                        DAL.InsertOrUpdate(SqlStatements.UpdateGuestSQL(), SqlStatements.InsertOrUpdateGuestParameters(newGuest));
                         ViewBag.SuccessMessage = "Thank you for RSVPing! Your choice has been saved and you will not be able to change it without contacting us.";
                     }
                 }

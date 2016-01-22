@@ -84,7 +84,7 @@ namespace MattAndRebeccaWedding
                     MySqlCommand cmdMySQL = new MySqlCommand();
                     MySqlDataReader dataReader;
                     cmdMySQL.Connection = mycon;
-                    cmdMySQL.CommandText = @"SELECT * FROM Guests;";
+                    cmdMySQL.CommandText = @"SELECT * FROM Guests Order By Name;";
 
                     using (cmdMySQL)
                     {
@@ -166,7 +166,7 @@ namespace MattAndRebeccaWedding
             return (rowCount);
         }
 
-        public static int InsertGuest(string sqlQuery, DataTable dtParameters = null)
+        public static int InsertOrUpdate(string sqlQuery, DataTable dtParameters = null)
         {
             DataTable dtSelectedInformation = new DataTable();
             int rowsAffected = 0;

@@ -1,0 +1,117 @@
+﻿@model MattAndRebeccaWedding.Models.Guest
+
+@{
+    ViewBag.Title = "EditGuest";
+}
+
+<h2>Edit Guest</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <label class="label label-success" style="font-size:1.4em">@ViewBag.SuccessMessage</label>
+    <br />
+    <br />
+}
+else if (!String.IsNullOrEmpty(ViewBag.FailureMessage))
+{
+    <label class="label label-danger" style="font-size:1.4em">@ViewBag.FailureMessage</label>
+    <br />
+    <br />
+}
+
+<div class="well">
+    @Html.Partial("_adminNavView")
+
+    @using (Html.BeginForm("EditGuest", "EditGuest", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.RsvpId)
+
+        <div class="editGuestContent">
+            <div class="row">
+                <div class="col-xs-2">
+                    <input type="button" value="Send Email" class="btn btn-primary" />
+                </div>
+                <div class="col-xs-10">
+                    <section>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                @Html.DisplayNameFor(model => Model.Name)
+                            </div>
+                            <div class="col-xs-3">
+                                @Html.TextBoxFor(model => Model.Name, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                @Html.DisplayNameFor(model => model.NumPeopleAllowed)
+                            </div>
+                            <div class="col-xs-3">
+                                @Html.TextBoxFor(model => Model.NumPeopleAllowed, htmlAttributes: new { @class = "form-control", @type = "number" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                @Html.DisplayNameFor(model => model.NumPeopleAttending)
+                            </div>
+                            <div class="col-xs-3">
+                                @Html.TextBoxFor(model => Model.NumPeopleAttending, htmlAttributes: new { @class = "form-control", @type = "number" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                @Html.DisplayNameFor(model => model.Email)
+                            </div>
+                            <div class="col-xs-3">
+                                @Html.TextBoxFor(model => Model.Email, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                @Html.DisplayNameFor(model => model.CommentForEmailSent)
+                            </div>
+                            <div class="col-xs-4">
+                                @Html.TextAreaFor(model => Model.CommentForEmailSent, htmlAttributes: new { @class = "form-control", @style = "width: 650px; height:100px;" })
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <section>
+                <div class="row">
+                    <div class="col-xs-2 col-sm-offset-2 vCenter">
+                        @Html.DisplayNameFor(model => model.RsvpId)
+                    </div>
+                    <div class="col-xs-4 vCenter">
+                        <h4>@Html.DisplayTextFor(model => Model.RsvpId)</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2 col-sm-offset-2">
+                        @Html.DisplayNameFor(model => model.HasRSVPed)
+                    </div>
+                    <div class="col-xs-4">
+                        @Html.CheckBoxFor(model => Model.HasRSVPed, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2 col-sm-offset-2">
+                        @Html.DisplayNameFor(model => model.CommentFromRSVP)
+                    </div>
+                    <div class="col-xs-4">
+                        @Html.TextAreaFor(model => Model.CommentFromRSVP, htmlAttributes: new { @class = "form-control", @style = "width: 650px; height:100px;" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2 col-sm-offset-2">
+                        @Html.DisplayNameFor(model => model.IsAttending)
+                    </div>
+                    <div class="col-xs-4">
+                        @Html.CheckBoxFor(model => Model.IsAttending, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+            </section>
+
+            <input type="submit" value="Update Guest" class="btn btn-primary col-sm-offset-6" />
+        </div>
+    }
+</div>
