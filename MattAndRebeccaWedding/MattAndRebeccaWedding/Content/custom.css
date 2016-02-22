@@ -1,0 +1,40 @@
+﻿.navbar {
+    border:none;
+    border-radius:0px;
+    background-color: #93c9ff;
+    padding:0px;
+    min-height:10px;
+}
+
+a{
+    color: black;
+    font-weight:bold;
+    font-size:1.3em;
+    font-family: Lucida Calligraphy;
+}
+
+a:hover{
+    color:#000000;
+   
+}
+
+.nav > li > a{
+    padding: 10px 0px 10px 0px;
+}
+
+.well {
+    border:15px solid #93c9ff;
+    border-top:none;
+    padding-top:0px;
+}
+
+.mainWell {
+    padding:0px;
+    min-height:1700px;
+}
+
+.headerContainer {
+    padding:0px;
+}
+
+
