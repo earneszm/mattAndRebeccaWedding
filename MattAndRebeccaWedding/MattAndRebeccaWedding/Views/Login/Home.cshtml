@@ -2,15 +2,16 @@
 @{
     ViewBag.Title = "Home";
 }
-
+@Html.Partial("_adminNavView")
 <h2>Home</h2>
 
 <div class="well">
 
-    @Html.Partial("_adminNavView")
+    
 
     <div>
-        @ViewBag.UserName
+        Welcome: @ViewBag.UserName
+        <h2>Nothing Implemented Here Yet.</h2>
     </div>
 </div>
 

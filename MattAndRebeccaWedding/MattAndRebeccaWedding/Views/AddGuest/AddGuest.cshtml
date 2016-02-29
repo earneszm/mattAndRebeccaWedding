@@ -4,6 +4,8 @@
     ViewBag.Title = "AddGuest";
 }
 
+@Html.Partial("_adminNavView")
+
 <h2>Add Guest</h2>
 
 @if (!String.IsNullOrEmpty(ViewBag.SuccessMessage))
@@ -21,7 +23,7 @@ else if (!String.IsNullOrEmpty(ViewBag.FailureMessage))
 
 <div class="well addGuestContent">
 
-    @Html.Partial("_adminNavView")
+    
 
     @using (Html.BeginForm("AddGuest", "AddGuest", FormMethod.Post))
     {

@@ -4,7 +4,7 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
+<h2>Admin Login</h2>
 
 @if(!String.IsNullOrEmpty(ViewBag.FailureMessage))
     {
@@ -13,7 +13,7 @@
         <br />
     }
 
-<div class="well">
+@*<div class="well">*@
 
 @using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
@@ -35,5 +35,5 @@
 
     <input type="submit" value="Login" class="btn btn-primary col-sm-offset-6" />
 }
-</div>
+@*</div>*@
 

@@ -43,5 +43,16 @@ namespace MattAndRebeccaWedding
                 }
             }
         }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            //We clear the response
+            Response.Clear();
+
+            Response.Redirect("/Error/Error");
+
+            //We clear the error
+            Server.ClearError();
+        }
     }
 }

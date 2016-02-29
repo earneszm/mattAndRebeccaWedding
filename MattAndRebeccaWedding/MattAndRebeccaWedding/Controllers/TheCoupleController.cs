@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace MattAndRebeccaWedding.Controllers
 {
-    public class OurStoryController : Controller
+    public class TheCoupleController : Controller
     {
         // GET: OurStory
-        public ActionResult OurStory()
+        public ActionResult Index()
         {
             return View();
         }

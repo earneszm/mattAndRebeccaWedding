@@ -52,7 +52,7 @@ namespace MattAndRebeccaWedding.Models
                 if (HasRSVPed == true)
                     return "Received";
                 else
-                    return "Not Yet";
+                    return "Waiting";
             }
             set
             {
@@ -61,6 +61,7 @@ namespace MattAndRebeccaWedding.Models
 
         [Display(Name = "Personal Email Comment")]
         public string CommentForEmailSent { get; set; }
+        [Display(Name = "RSVP Comments:")]
         public string CommentFromRSVP { get; set; }
 
         public Guest()

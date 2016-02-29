@@ -23,18 +23,30 @@ a:hover{
 }
 
 .well {
-    border:15px solid #93c9ff;
-    border-top:none;
-    padding-top:0px;
+    border:none;
+    border-radius:0px;
+    box-shadow:none;
 }
 
 .mainWell {
+    
+    padding-top:0px;
     padding:0px;
-    min-height:1700px;
+    min-height:400px;
+    border:15px solid #93c9ff;
+    border-top:none;
+}
+
+.mainWell h2{
+    margin-left:50px;
 }
 
 .headerContainer {
     padding:0px;
 }
 
-
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1100px;
+    }
+}

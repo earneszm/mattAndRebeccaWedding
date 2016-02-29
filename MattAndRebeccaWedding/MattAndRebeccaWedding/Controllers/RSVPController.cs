@@ -11,6 +11,11 @@ namespace MattAndRebeccaWedding.Controllers
 {
     public class RSVPController : BaseController
     {
+
+        public ActionResult Index()
+        {
+            return View();
+        }
         // GET: RSVP
         public ActionResult RSVP()
         {

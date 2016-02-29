@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "EditGuest";
 }
+@Html.Partial("_adminNavView")
 
 <h2>Edit Guest</h2>
 
@@ -20,7 +21,7 @@ else if (!String.IsNullOrEmpty(ViewBag.FailureMessage))
 }
 
 <div class="well">
-    @Html.Partial("_adminNavView")
+    
 
     @using (Html.BeginForm("EditGuest", "EditGuest", FormMethod.Post))
     {

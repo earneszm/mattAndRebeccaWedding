@@ -15,7 +15,15 @@ namespace MattAndRebeccaWedding.Controllers
         // GET: Login
         public ActionResult Login()
         {
-            return View();
+            if (User != null)
+            {
+                return RedirectToAction("Logout");
+            }
+            else
+            {
+                // no user logged in, allow them to login
+                return View();
+            }
         }
 
         [HttpPost]

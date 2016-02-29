@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
@@ -14,17 +14,19 @@
 
 <body style="min-width:1100px;">     
     <main>
+        
         <div class="container body-content" >
+            @Html.Partial("_adminLoginTracker")
             <div class="well mainWell">
                 @Html.Partial("_header")
                 @RenderBody()
-                <hr />
             </div>
         </div>
 
     </main>
 
-    <footer>
+    <footer>        
+        <p>@Html.Partial("_footer")</p>
         <p>&copy; @DateTime.Now.Year</p>
     </footer>
     

@@ -228,12 +228,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddGuestController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EditGuestController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\OurStoryController.cs" />
+    <Compile Include="Controllers\RegistryController.cs" />
+    <Compile Include="Controllers\TheCoupleController.cs" />
     <Compile Include="Controllers\RSVPController.cs" />
+    <Compile Include="Controllers\WeddingDetailsController.cs" />
     <Compile Include="DAL\DAL.cs" />
     <Compile Include="DAL\SqlStatements.cs" />
     <Compile Include="Global.asax.cs">
@@ -278,6 +283,7 @@
     <Content Include="Content\Images\darkWood.png" />
     <Content Include="Content\Images\paperBackground.jpg" />
     <Content Include="Content\Images\ring.jpeg" />
+    <Content Include="Content\Images\subtle_zebra_3d.png" />
     <Content Include="Content\Images\White-Gradient-Squares.jpg" />
     <Content Include="Content\Images\wood_planks.jpg" />
     <Content Include="favicon.ico" />
@@ -357,9 +363,18 @@
     <Content Include="Views\EditGuest\EditGuest.cshtml" />
     <Content Include="Views\Shared\_adminNavView.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Registry\Index.cshtml" />
+    <Content Include="Views\WeddingDetails\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\TheCouple\Index.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\RSVP\Index.cshtml" />
+    <Content Include="Views\Email\Index.cshtml" />
+    <Content Include="Views\Shared\_adminLoginTracker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Project_Readme.html" />
