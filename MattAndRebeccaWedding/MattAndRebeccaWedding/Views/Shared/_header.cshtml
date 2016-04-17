@@ -1,112 +1,134 @@
-﻿
-<header>
-    <nav class="navbar navbar-default">
+﻿@*<nav class="navbar navbar-default">
         <div class="container headerContainer">
             <ul class="nav nav-justified">
-                <li >@Html.ActionLink("Home", "Index", "Home")</li>
-                <li >@Html.ActionLink("The Couple", "Index", "TheCouple")</li>
-                <li >@Html.ActionLink("Wedding Details", "Index", "WeddingDetails")</li>
-                <li >@Html.ActionLink("RSVP", "GuestRSVP", "RSVP")</li>
-                <li >@Html.ActionLink("Registry", "Index", "Registry")</li>
-                <li >@Html.ActionLink("Contact", "Index", "Contact")</li>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("The Couple", "Index", "TheCouple")</li>
+                <li>@Html.ActionLink("Wedding Details", "Index", "WeddingDetails")</li>
+                <li>@Html.ActionLink("RSVP", "GuestRSVP", "RSVP")</li>
+                <li>@Html.ActionLink("Registry", "Index", "Registry")</li>
+                <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
+            </ul>
+        </div>
+    </nav>*@
+
+
+<header>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="headerContainer collapse navbar-collapse">
+            <ul class="nav nav-justified">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("The Couple", "Index", "TheCouple")</li>
+                <li>@Html.ActionLink("Wedding Details", "Index", "WeddingDetails")</li>
+                <li>@Html.ActionLink("RSVP", "GuestRSVP", "RSVP")</li>
+                <li>@Html.ActionLink("Registry", "Index", "Registry")</li>
+                <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
             </ul>
         </div>
     </nav>
 
+
+
     @*<div class="container">
-        <ul class="nav nav-pills nav-tabs-justified col-xs-12">
-            <li class="col-xs-2">@Html.ActionLink("Home", "Index", "Home")</li>
-            <li class="col-xs-2">@Html.ActionLink("The Couple", "Index", "TheCouple")</li>
-            <li class="col-xs-2">@Html.ActionLink("Wedding Details", "Index", "WeddingDetails")</li>
-            <li class="col-xs-2">@Html.ActionLink("RSVP", "RSVP", "RSVP")</li>
-            <li class="col-xs-2">@Html.ActionLink("Registry", "Index", "Registry")</li>
-            <li class="col-xs-2">@Html.ActionLink("Contact", "Index", "Contact")</li>
-        </ul>
-    </div>*@
+            <ul class="nav nav-pills nav-tabs-justified col-xs-12">
+                <li class="col-xs-2">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="col-xs-2">@Html.ActionLink("The Couple", "Index", "TheCouple")</li>
+                <li class="col-xs-2">@Html.ActionLink("Wedding Details", "Index", "WeddingDetails")</li>
+                <li class="col-xs-2">@Html.ActionLink("RSVP", "RSVP", "RSVP")</li>
+                <li class="col-xs-2">@Html.ActionLink("Registry", "Index", "Registry")</li>
+                <li class="col-xs-2">@Html.ActionLink("Contact", "Index", "Contact")</li>
+            </ul>
+        </div>*@
 
     @*<div class="headerTopBar">
 
-    </div>
-    <div class="headerBanner container">
-        <div class="row" style="text-align:center; padding-top:10px;">
         </div>
-        <div class="row">
-            <div class="col-xs-2">
+        <div class="headerBanner container">
+            <div class="row" style="text-align:center; padding-top:10px;">
             </div>
-            <div class="col-xs-8" style="text-align:center; padding-top:15px;">
-                <h1>Matt and Rebecca</h1>
+            <div class="row">
+                <div class="col-xs-2">
+                </div>
+                <div class="col-xs-8" style="text-align:center; padding-top:15px;">
+                    <h1>Matt and Rebecca</h1>
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <ul class="nav nav-pills nav-tabs-justified col-xs-12">
-                <li>
-                    <a href="@Url.Action("Index", "Home")">
-                        <img src="~/Content/Images/Buttons/homeButtonNormal.png"
-                             onmouseover="this.src = '/Content/Images/Buttons/homeButtonHover.png';"
-                             onmouseout="this.src = '/Content/Images/Buttons/homeButtonNormal.png';"
-                             style="max-width:150px;" class="img-responsive" />
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("OurStory", "OurStory")">
-                        <img src="~/Content/Images/Buttons/ourStoryButtonNormal.png"
-                             onmouseover="this.src = '/Content/Images/Buttons/ourStoryButtonHover.png';"
-                             onmouseout="this.src = '/Content/Images/Buttons/ourStoryButtonNormal.png';"
-                             style="max-width:150px;" class="img-responsive" />
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Contact", "Home")">
-                        <img src="~/Content/Images/Buttons/logisticsButtonNormal.png"
-                             onmouseover="this.src = '/Content/Images/Buttons/logisticsButtonHover.png';"
-                             onmouseout="this.src = '/Content/Images/Buttons/logisticsButtonNormal.png';"
-                             style="max-width:150px;" class="img-responsive" />
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("GuestRSVP", "RSVP")">
-                        <img src="~/Content/Images/Buttons/rsvpButtonNormal.png"
-                             onmouseover="this.src = '/Content/Images/Buttons/rsvpButtonHover.png';"
-                             onmouseout="this.src = '/Content/Images/Buttons/rsvpButtonNormal.png';"
-                             style="max-width:150px;" class="img-responsive" />
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("GuestRSVP", "RSVP")">
-                        <img src="~/Content/Images/Buttons/questionsButtonNormal.png"
-                             onmouseover="this.src = '/Content/Images/Buttons/questionsButtonHover.png';"
-                             onmouseout="this.src = '/Content/Images/Buttons/questionsButtonNormal.png';"
-                             style="max-width:150px;" class="img-responsive" />
-                    </a>
-                </li>
-                @if (User != null && User.isAuthenticated)
-                {
+            <div class="container">
+                <ul class="nav nav-pills nav-tabs-justified col-xs-12">
                     <li>
-                        <a href="@Url.Action("Logout", "Login")">
-                            <img src="~/Content/Images/Buttons/loginButtonNormal.png"
-                                 onmouseover="this.src = '/Content/Images/Buttons/loginButtonHover.png';"
-                                 onmouseout="this.src = '/Content/Images/Buttons/loginButtonNormal.png';"
+                        <a href="@Url.Action("Index", "Home")">
+                            <img src="~/Content/Images/Buttons/homeButtonNormal.png"
+                                 onmouseover="this.src = '/Content/Images/Buttons/homeButtonHover.png';"
+                                 onmouseout="this.src = '/Content/Images/Buttons/homeButtonNormal.png';"
                                  style="max-width:150px;" class="img-responsive" />
                         </a>
                     </li>
-                    <li class="pull-right">@Html.ActionLink("Admin", "Home", "Login")</li>
-
-                }
-                else
-                {
-                    <li class="pull-right">
-                        <a href="@Url.Action("Logout", "Login")">
-                            <img src="~/Content/Images/Buttons/loginButtonNormal.png"
-                                 onmouseover="this.src = '/Content/Images/Buttons/loginButtonHover.png';"
-                                 onmouseout="this.src = '/Content/Images/Buttons/loginButtonNormal.png';"
+                    <li>
+                        <a href="@Url.Action("OurStory", "OurStory")">
+                            <img src="~/Content/Images/Buttons/ourStoryButtonNormal.png"
+                                 onmouseover="this.src = '/Content/Images/Buttons/ourStoryButtonHover.png';"
+                                 onmouseout="this.src = '/Content/Images/Buttons/ourStoryButtonNormal.png';"
                                  style="max-width:150px;" class="img-responsive" />
                         </a>
                     </li>
-                }
+                    <li>
+                        <a href="@Url.Action("Contact", "Home")">
+                            <img src="~/Content/Images/Buttons/logisticsButtonNormal.png"
+                                 onmouseover="this.src = '/Content/Images/Buttons/logisticsButtonHover.png';"
+                                 onmouseout="this.src = '/Content/Images/Buttons/logisticsButtonNormal.png';"
+                                 style="max-width:150px;" class="img-responsive" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("GuestRSVP", "RSVP")">
+                            <img src="~/Content/Images/Buttons/rsvpButtonNormal.png"
+                                 onmouseover="this.src = '/Content/Images/Buttons/rsvpButtonHover.png';"
+                                 onmouseout="this.src = '/Content/Images/Buttons/rsvpButtonNormal.png';"
+                                 style="max-width:150px;" class="img-responsive" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("GuestRSVP", "RSVP")">
+                            <img src="~/Content/Images/Buttons/questionsButtonNormal.png"
+                                 onmouseover="this.src = '/Content/Images/Buttons/questionsButtonHover.png';"
+                                 onmouseout="this.src = '/Content/Images/Buttons/questionsButtonNormal.png';"
+                                 style="max-width:150px;" class="img-responsive" />
+                        </a>
+                    </li>
+                    @if (User != null && User.isAuthenticated)
+                    {
+                        <li>
+                            <a href="@Url.Action("Logout", "Login")">
+                                <img src="~/Content/Images/Buttons/loginButtonNormal.png"
+                                     onmouseover="this.src = '/Content/Images/Buttons/loginButtonHover.png';"
+                                     onmouseout="this.src = '/Content/Images/Buttons/loginButtonNormal.png';"
+                                     style="max-width:150px;" class="img-responsive" />
+                            </a>
+                        </li>
+                        <li class="pull-right">@Html.ActionLink("Admin", "Home", "Login")</li>
 
-            </ul>
-        </div>
-    </div>*@
+                    }
+                    else
+                    {
+                        <li class="pull-right">
+                            <a href="@Url.Action("Logout", "Login")">
+                                <img src="~/Content/Images/Buttons/loginButtonNormal.png"
+                                     onmouseover="this.src = '/Content/Images/Buttons/loginButtonHover.png';"
+                                     onmouseout="this.src = '/Content/Images/Buttons/loginButtonNormal.png';"
+                                     style="max-width:150px;" class="img-responsive" />
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>*@
     @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div>

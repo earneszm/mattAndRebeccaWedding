@@ -15,6 +15,7 @@
     max-width:1100px !important;
 }
 
+
 body {
     padding-bottom: 20px;
     background-color: transparent;
@@ -51,7 +52,7 @@ body {
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 800px;
 }
 
 .headerBanner {
@@ -239,3 +240,30 @@ footer > p {
         font-size: 1em;
         font-weight:normal;
     }
+
+   .hidden-inline-xs {
+    display: inline-block !important;
+}
+@media (max-width: 767px) {
+  .hidden-inline-xs {
+    display: none !important;
+  }
+}
+
+.hidden-inline-sm {
+    display: inline-block !important;
+}
+@media  (max-width: 992px) {
+  .hidden-inline-sm {
+    display: none !important;
+  }
+}
+
+
+.editGuestContent div{
+    padding-top:5px;
+}
+
+.adminNavInner button{
+    margin-bottom:5px;
+}

@@ -21,27 +21,27 @@
         }
     }
 
-<div class="row rsvpGuestListRow @rowColor">
-    <div class="col-xs-1 vCenter">
-        @Html.DisplayTextFor(model => model.DisplayNum)
+    <div class="row rsvpGuestListRow @rowColor">
+        <div class="col-xs-1 vCenter">
+            @Html.DisplayTextFor(model => model.DisplayNum)
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 vCenter">
+            @Html.DisplayTextFor(model => model.Name)
+        </div>
+        <div class="col-md-3 hidden-inline-xs hidden-inline-sm vCenter">
+            @Html.DisplayTextFor(model => model.Email)
+        </div>
+        <div class="col-sm-3 col-md-2 hidden-inline-xs vCenter">
+            @Html.DisplayTextFor(model => model.IsAttendingText)
+        </div>
+        <div class="col-sm-2 col-md-1 hidden-inline-xs vCenter">
+            @Html.DisplayTextFor(model => model.HasRSVPedText)
+        </div>
+        @*<div class="col-xs-3">
+               @Html.DisplayTextFor(model => model.CommentForEmailSent)
+            </div>*@
+        <div class="col-xs-1 vCenter">
+            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("EditGuest", "EditGuest", new {guestID=Model.GuestID})'">Select</button>
+        </div>
     </div>
-    <div class="col-xs-3 vCenter">
-        @Html.DisplayTextFor(model => model.Name)
-    </div>
-    <div class="col-xs-3 vCenter">
-        @Html.DisplayTextFor(model => model.Email)
-    </div>
-    <div class="col-xs-2 vCenter">
-        @Html.DisplayTextFor(model => model.IsAttendingText)
-    </div>
-    <div class="col-xs-1 vCenter">
-       @Html.DisplayTextFor(model => model.HasRSVPedText)
-    </div>
-    @*<div class="col-xs-3">
-       @Html.DisplayTextFor(model => model.CommentForEmailSent)
-    </div>*@
-    <div class="col-xs-1 vCenter">
-        <button type="button" class="btn btn-primary col-sm-offset-9" onclick="location.href='@Url.Action("EditGuest", "EditGuest", new {guestID=Model.GuestID})'">Select</button>
-    </div>
-</div>
-    }
+}

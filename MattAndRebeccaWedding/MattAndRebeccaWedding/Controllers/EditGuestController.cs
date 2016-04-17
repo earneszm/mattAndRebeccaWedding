@@ -9,39 +9,32 @@ using System.Data;
 
 namespace MattAndRebeccaWedding.Controllers
 {
+    [Authorize]
     public class EditGuestController : BaseController
     {
         // GET: EditGuest
         public ActionResult EditGuest(int guestID)
         {
-            if (User != null)
+            using (DataTable dtGuest = DAL.SelectStatement(SqlStatements.SelectGuestByGuestIDSQL(), SqlStatements.SelectGuestByGuestIDParameters(guestID)))
             {
-                using (DataTable dtGuest = DAL.SelectStatement(SqlStatements.SelectGuestByGuestIDSQL(), SqlStatements.SelectGuestByGuestIDParameters(guestID)))
-                {                     
-                    if (dtGuest.Rows.Count > 0)
-                    {
-                        Guest guest = new Guest(dtGuest.Rows[0]);
-                        return View(guest);
-                    }
-                    else
-                    {
-                        // guest not found in database
-                        ViewBag.FailureMessage = "Guest Not Found. Contact Your Good Buddy Zach.";
-                        return View();
-                    }
-                }                
-            }
-            else
-            {
-                // unauthorized
-                return View();
+                if (dtGuest.Rows.Count > 0)
+                {
+                    Guest guest = new Guest(dtGuest.Rows[0]);
+                    return View(guest);
+                }
+                else
+                {
+                    // guest not found in database
+                    ViewBag.FailureMessage = "Guest Not Found. Contact Your Good Buddy Zach.";
+                    return View();
+                }
             }
         }
 
         [HttpPost]
         public ActionResult EditGuest(Guest guest)
         {
-            if(DAL.InsertOrUpdate(SqlStatements.UpdateGuestSQL(), SqlStatements.InsertOrUpdateGuestParameters(guest)) == 1)
+            if (DAL.InsertOrUpdate(SqlStatements.UpdateGuestSQL(), SqlStatements.InsertOrUpdateGuestParameters(guest)) == 1)
             {
                 ViewBag.SuccessMessage = "Guest Successfully Updated!";
             }

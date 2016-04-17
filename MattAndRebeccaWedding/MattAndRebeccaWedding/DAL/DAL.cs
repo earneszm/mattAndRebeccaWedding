@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using MattAndRebeccaWedding.Models;
+using System.Data.SqlClient;
 
 namespace MattAndRebeccaWedding
 {
@@ -18,37 +19,37 @@ namespace MattAndRebeccaWedding
             try
             {
 
-                using (MySqlConnection mycon = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString))
+                using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
                 {
 
                     mycon.Open();
 
-                    MySqlCommand cmdMySQL = new MySqlCommand();
-                    MySqlDataReader dataReader;
-                    cmdMySQL.Connection = mycon;
-                    cmdMySQL.CommandText = sqlQuery;
+                    SqlCommand cmd = new SqlCommand();
+                    SqlDataReader dataReader;
+                    cmd.Connection = mycon;
+                    cmd.CommandText = sqlQuery;
 
-                    using (cmdMySQL)
+                    using (cmd)
                     {
                         if (dtParameters != null)
                         {
                             foreach (DataRow dr in dtParameters.Rows)
                             {
-                                cmdMySQL.Parameters.Add(new MySqlParameter(dr[0].ToString(), dr[1].ToString()));
+                                cmd.Parameters.Add(new SqlParameter(dr[0].ToString(), dr[1].ToString()));
                             }
                         }
 
-                        using (dataReader = cmdMySQL.ExecuteReader())
+                        using (dataReader = cmd.ExecuteReader())
                         {
                             dtSelectedInformation.Load(dataReader);
                         }
 
                         // Clear parameters from command
-                        cmdMySQL.Parameters.Clear();
+                        cmd.Parameters.Clear();
                     }
                 }
             }
-            catch (MySqlException sqlException)
+            catch (SqlException sqlException)
             {
                 //catch an log the error                
                 //if (sqlException.Number == 0 || sqlException.Number == 1042)
@@ -76,13 +77,13 @@ namespace MattAndRebeccaWedding
             try
             {
 
-                using (MySqlConnection mycon = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString))
+                using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
                 {
 
                     mycon.Open();
 
-                    MySqlCommand cmdMySQL = new MySqlCommand();
-                    MySqlDataReader dataReader;
+                    SqlCommand cmdMySQL = new SqlCommand();
+                    SqlDataReader dataReader;
                     cmdMySQL.Connection = mycon;
                     cmdMySQL.CommandText = @"SELECT * FROM Guests Order By Name;";
 
@@ -99,7 +100,7 @@ namespace MattAndRebeccaWedding
                     }
                 }
             }
-            catch (MySqlException sqlException)
+            catch (SqlException sqlException)
             {
                 //catch an log the error                
                 //if (sqlException.Number == 0 || sqlException.Number == 1042)
@@ -127,33 +128,33 @@ namespace MattAndRebeccaWedding
             try
             {
 
-                using (MySqlConnection mycon = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySQLConnection"].ConnectionString))
+                using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
                 {
 
                     mycon.Open();
 
-                    MySqlCommand cmdMySQL = new MySqlCommand();
-                    cmdMySQL.Connection = mycon;
-                    cmdMySQL.CommandText = sqlQuery;
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mycon;
+                    cmd.CommandText = sqlQuery;
 
-                    using (cmdMySQL)
+                    using (cmd)
                     {
                         if (dtParameters != null)
                         {
                             foreach (DataRow dr in dtParameters.Rows)
                             {
-                                cmdMySQL.Parameters.Add(new MySqlParameter(dr[0].ToString(), dr[1].ToString()));
+                                cmd.Parameters.Add(new SqlParameter(dr[0].ToString(), dr[1].ToString()));
                             }
                         }
 
-                        rowCount = Convert.ToInt32(cmdMySQL.ExecuteScalar());
+                        rowCount = Convert.ToInt32(cmd.ExecuteScalar());
 
                         // Clear parameters from command
-                        cmdMySQL.Parameters.Clear();
+                        cmd.Parameters.Clear();
                     }
                 }
             }
-            catch (MySqlException sqlException)
+            catch (SqlException sqlException)
             {
                 //catch an log the error
                 
@@ -174,33 +175,33 @@ namespace MattAndRebeccaWedding
             try
             {
 
-                using (MySqlConnection mycon = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString))
+                using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
                 {
 
                     mycon.Open();
 
-                    MySqlCommand cmdMySQL = new MySqlCommand();
-                    cmdMySQL.Connection = mycon;
-                    cmdMySQL.CommandText = sqlQuery;
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mycon;
+                    cmd.CommandText = sqlQuery;
 
-                    using (cmdMySQL)
+                    using (cmd)
                     {
                         if (dtParameters != null)
                         {
                             foreach (DataRow dr in dtParameters.Rows)
                             {
-                                cmdMySQL.Parameters.Add(new MySqlParameter(dr[0].ToString(), dr[1].ToString()));
+                                cmd.Parameters.Add(new SqlParameter(dr[0].ToString(), dr[1].ToString()));
                             }
                         }
 
-                        rowsAffected = cmdMySQL.ExecuteNonQuery();
+                        rowsAffected = cmd.ExecuteNonQuery();
 
                         // Clear parameters from command
-                        cmdMySQL.Parameters.Clear();
+                        cmd.Parameters.Clear();
                     }
                 }
             }
-            catch (MySqlException sqlException)
+            catch (SqlException sqlException)
             {
                 //catch an log the error                
                 //if (sqlException.Number == 0 || sqlException.Number == 1042)

@@ -3,9 +3,13 @@
     ViewBag.Title = "Email";
 }
 @Html.Partial("_adminNavView")
+
+<h3>@ViewBag.Message</h3>
 <h2>Email</h2>
 <div class="well">    
     <h3>Not Implemented Yet.</h3>
+
+    <button type="button" class="btn btn-primary" style="font-weight:bold;" onclick="location.href='@Url.Action("Send", "Email")'"><b>Test Send</b></button>
 </div>
 
 

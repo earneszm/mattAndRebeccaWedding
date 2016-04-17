@@ -74,8 +74,8 @@ namespace MattAndRebeccaWedding.Models
             GuestID = int.Parse(dr["GuestID"].ToString());
             Name = dr["Name"].ToString();
             Email = dr["Email"].ToString();
-            IsAttending = dr["IsAttending"].ToString() == "1" ? true : false;
-            HasRSVPed = dr["HasRSVPed"].ToString() == "1" ? true : false;
+            IsAttending = bool.Parse(dr["IsAttending"].ToString());
+            HasRSVPed = bool.Parse(dr["HasRSVPed"].ToString());
             CommentForEmailSent = dr["CommentForEmailSent"].ToString();
             CommentFromRSVP = dr["CommentFromRSVP"].ToString();
             RsvpId = dr["RSVP_ID"].ToString();

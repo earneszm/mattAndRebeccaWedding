@@ -8,6 +8,7 @@ using MattAndRebeccaWedding.Utilities;
 
 namespace MattAndRebeccaWedding.Controllers
 {
+    [Authorize]
     public class AddGuestController : Controller
     {
         // GET: AddGuest
