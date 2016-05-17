@@ -1,10 +1,10 @@
-﻿@model MattAndRebeccaWedding.Models.Guest
+﻿@model MattAndRebeccaWedding.Models.RSVPs
 
 @{string rowColor = "rowNormalEven";
 
-    if (Model.HasRSVPed)
+    if (Model.isAttending)
     {
-        if (Model.IsAttending == false)
+        if (Model.isAttending == false)
         {
             rowColor = "rowNotAttending"; ;
         }
@@ -15,10 +15,10 @@
     }
     else
     {
-        if (Model.GuestID % 2 == 1)
-        {
-            rowColor = "rowNormalOdd";
-        }
+        //if (Model.GuestID % 2 == 1)
+        //{
+        //    rowColor = "rowNormalOdd";
+        //}
     }
 
     <div class="row rsvpGuestListRow @rowColor">
@@ -26,22 +26,29 @@
             @Html.DisplayTextFor(model => model.DisplayNum)
         </div>
         <div class="col-xs-6 col-sm-4 col-md-3 vCenter">
-            @Html.DisplayTextFor(model => model.Name)
+            @foreach (var g in Model.guests)
+            {
+                @Html.DisplayTextFor(model => g.firstName)
+                @Html.Raw(" ")
+                @Html.DisplayTextFor(model => g.lastName)
+                 <br/> 
+            }
+            
         </div>
-        <div class="col-md-3 hidden-inline-xs hidden-inline-sm vCenter">
-            @Html.DisplayTextFor(model => model.Email)
-        </div>
+        @*<div class="col-md-3 hidden-inline-xs hidden-inline-sm vCenter">
+            @Html.DisplayTextFor(model => model.hasRSVPed)
+        </div>*@
         <div class="col-sm-3 col-md-2 hidden-inline-xs vCenter">
-            @Html.DisplayTextFor(model => model.IsAttendingText)
+            @Html.DisplayTextFor(model => model.IsAttendingString)
         </div>
-        <div class="col-sm-2 col-md-1 hidden-inline-xs vCenter">
-            @Html.DisplayTextFor(model => model.HasRSVPedText)
+        <div class="col-sm-2 col-md-4 hidden-inline-xs vCenter">
+            @Html.DisplayTextFor(model => model.NamesOfPeopleAttending)
         </div>
         @*<div class="col-xs-3">
                @Html.DisplayTextFor(model => model.CommentForEmailSent)
             </div>*@
         <div class="col-xs-1 vCenter">
-            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("EditGuest", "EditGuest", new {guestID=Model.GuestID})'">Select</button>
+            @*<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("EditGuest", "EditGuest", new {guestID=Model.GuestID})'">Select</button>*@
         </div>
     </div>
 }

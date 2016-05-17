@@ -4,7 +4,12 @@
     ViewBag.Title = "Guest RSVP";
 }
 
-<h2>Guest RSVP</h2>
+@section scripts{
+    
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    }
+
+
 
 <div id="validationDiv">
     @if (!String.IsNullOrEmpty(ViewBag.SuccessMessage))
@@ -26,35 +31,45 @@
 
 <div class="well addGuestContent">
 
-    @using (Html.BeginForm("GuestRSVP", "RSVP", FormMethod.Post))
+    <div class="row" style="padding-bottom:35px;">
+        <div class="col-xs-12">
+            <img src="~/Content/Images/lookUpRsvp.png" class="img-responsive center-block" />
+        </div>
+
+    </div>
+
+    @using (Ajax.BeginForm("SearchRSVPs", "RSVP",
+                    new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "searchResults" }))
     {
         <div class="row">
-            <div class="col-xs-5 col-sm-2 col-sm-offset-2">
-                @Html.DisplayNameFor(model => Model.RsvpId)
+            <div class="col-xs-5 col-sm-2 col-sm-offset-3 vCenter">
+                <h3>First Name:</h3>
             </div>
-            <div class="col-xs-7 col-sm-3">
-                @Html.TextBoxFor(model => Model.RsvpId, htmlAttributes: new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-5 col-sm-2 col-sm-offset-2">
-                @Html.DisplayNameFor(model => Model.IsAttending)
-            </div>
-            <div class="col-xs-7 col-sm-3">
-                @Html.CheckBoxFor(model => Model.IsAttending, htmlAttributes: new { @class = "form-control" })
+            <div class="col-xs-7 col-sm-3 vCenter">
+                @Html.TextBox("firstName", null, new { id = "firstName", @class="form-control" })
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-4 col-sm-2 col-sm-offset-2">
-                @Html.DisplayNameFor(model => Model.CommentFromRSVP)
-            </div>
-            <div class="col-xs-8">
-                @Html.TextAreaFor(model => Model.CommentFromRSVP, 4, 50, htmlAttributes: new { @class = "form-control", @style="resize:none; max-width:500px;" })
+            <div class="col-xs-offset-6">
+                <h3 style="margin:0px;">And/Or</h3>
             </div>
         </div>
 
-        <input type="submit" value="Send RSVP" class="btn btn-primary" />
+        <div class="row">
+            <div class="col-xs-5 col-sm-2 col-sm-offset-3 vCenter">
+                <h3>Last Name:</h3>
+            </div>
+            <div class="col-xs-7 col-sm-3 vCenter">
+                @Html.TextBox("lastName", null, new { id = "lastName", @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-offset-6">
+                <input type="submit" value="Search" class="btn btn-primary btn-lg" />
+            </div>
+        </div>        
     }
+    <div id="searchResults"></div>
 </div>

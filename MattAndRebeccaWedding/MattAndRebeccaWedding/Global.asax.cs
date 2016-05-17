@@ -44,7 +44,7 @@ namespace MattAndRebeccaWedding
             }
         }
 
-        void Application_Error(object sender, EventArgs e)
+        protected void Application_Error(object sender, EventArgs e)
         {
             //We clear the response
             Response.Clear();

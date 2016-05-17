@@ -1,4 +1,4 @@
-﻿@model MattAndRebeccaWedding.Models.Guests
+﻿@model MattAndRebeccaWedding.Models.GuestList
 
 @{
     ViewBag.Title = "RSVP";
@@ -9,7 +9,7 @@
 
 <div class="well">    
 
-    <div class="row" id="guestStats">
+    @*<div class="row" id="guestStats">
         <div class="col-xs-12 col-sm-6" id="attendanceTotal">
             <div class="row">
                 <div class="col-xs-12">
@@ -55,27 +55,30 @@
             </div>
         </div>
     </div>
-
+*@
 <div class="row text-center rsvpHeaders">
     <div class="col-xs-1 hidden-xs">
         <h4>Count:</h4>
     </div>
     <div class="col-xs-6 col-sm-4 col-md-3">
-        <h4>@Html.DisplayNameFor(model => model.guestList[0].Name)</h4>
+        @*<h4>@Html.DisplayNameFor(model => model.guestList[0].Name)</h4>*@
+        <h4>Names:</h4>
     </div>
-    <div class="col-md-3 hidden-xs hidden-inline-sm">
-        <h4>@Html.DisplayNameFor(model => model.guestList[0].Email)</h4>
-    </div>
+    @*<div class="col-md-3 hidden-xs hidden-inline-sm">
+        <h4>Has RSVPed?</h4>
+    </div>*@
     <div class="col-sm-3 col-md-2 hidden-xs">
-        <h4>@Html.DisplayNameFor(model => model.guestList[0].IsAttending)</h4>
+        @*<h4>@Html.DisplayNameFor(model => model.guestList[0].IsAttending)</h4>*@
+        <h4>Attending?</h4>
     </div>
-    <div class="col-sm-2 hidden-xs">
-        <h4>@Html.DisplayNameFor(model => model.guestList[0].HasRSVPed)</h4>
+    <div class="col-sm-5 hidden-xs">
+        @*<h4>@Html.DisplayNameFor(model => model.guestList[0].HasRSVPed)</h4>*@
+        <h4>Names of People Attending</h4>
     </div>
 </div>
-@foreach (var item in Model.guestList)
+@foreach (var item in Model.rsvps)
 {
-    item.DisplayNum = Model.guestList.IndexOf(item) + 1;
+    //item.DisplayNum = Model.guestList.IndexOf(item) + 1;
     @Html.Partial("_guest", item);
 }
 </div>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using MattAndRebeccaWedding.Models;
 using System.Data.SqlClient;
+using Dapper;
 
 namespace MattAndRebeccaWedding
 {
@@ -70,6 +71,55 @@ namespace MattAndRebeccaWedding
             return (dtSelectedInformation);
         }
 
+        public static List<Guests> GetAllGuests()
+        {
+            using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
+            {
+                return mycon.Query<Guests>
+                (@"select guestID, r.rsvpID, g.firstName, g.LastName, r.hasRSVPed, r.isAttending, r.numPeopleAttending, r.namesOfPeopleAttending, r.rsvpComment from tblguests g inner join tblrsvp r on g.rsvpID = r.rsvpID 
+                    order by r.rsvpID, g.lastName, g.firstName").ToList();
+            }
+        }
+
+        public static List<Guests> GetRSVPByID(string rsvpID)
+        {
+            using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
+            {
+                return mycon.Query<Guests>
+                (@"select guestID, r.rsvpID, g.firstName, g.LastName, r.hasRSVPed, r.isAttending, r.numPeopleAttending, r.namesOfPeopleAttending, r.rsvpComment from tblguests g 
+inner join tblrsvp r on g.rsvpID = r.rsvpID 
+where r.rsvpID = @rsvpID
+                    order by r.rsvpID, g.lastName, g.firstName",
+                    new { rsvpID = rsvpID }).ToList();
+            }
+        }
+
+        public static List<searchViewModel> SearchRSVPs(string fName, string lName)
+        {
+            using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
+            {
+                return mycon.Query<searchViewModel>
+                (@"select * from tblguests where  firstName like '%' + @firstName + '%' and lastName like '%' + @lastName +'%'",
+                    new { firstName = fName ?? "", lastName = lName ?? "" }).ToList();
+            }
+        }
+
+        public static int UpdateRSVP(RSVPs rsvp)
+        {
+            using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
+            {
+                return mycon.Execute
+                (@"update tblrsvp set hasRSVPed = @hasRSVPed, 
+                    isAttending = @isAttending, 
+                    numPeopleAttending = @numPeopleAttending, 
+                    namesOfPeopleAttending = @namesOfPeopleAttending,
+                     rsvpComment = @rsvpComment
+                    where rsvpID = @rsvpID",
+                    new { rsvpID = rsvp.RsvpID, hasRSVPed = rsvp.hasRSVPed, isAttending = rsvp.isAttending, numPeopleAttending = rsvp.NumPeopleAttending,
+                    namesOfPeopleAttending = rsvp.NamesOfPeopleAttending, rsvpComment = rsvp.rsvpComment});
+            }
+        }
+
         public static DataTable SelectRSVPs()
         {
             DataTable dtSelectedInformation = new DataTable();
@@ -85,7 +135,8 @@ namespace MattAndRebeccaWedding
                     SqlCommand cmdMySQL = new SqlCommand();
                     SqlDataReader dataReader;
                     cmdMySQL.Connection = mycon;
-                    cmdMySQL.CommandText = @"SELECT * FROM Guests Order By Name;";
+                    cmdMySQL.CommandText = @"select guestID, r.rsvpID, g.firstName, g.LastName, r.hasRSVPed, r.isAttending, r.numPeopleAttending, r.rsvpComment from tblguests g inner join tblrsvp r on g.rsvpID = r.rsvpID 
+order by r.rsvpID, g.lastName, g.firstName";
 
                     using (cmdMySQL)
                     {

@@ -7,7 +7,8 @@
     /*background-image: -moz-linear-gradient(-89deg, rgba(200,179,168,0.98) 0%, #c5a3c4 100%);
     background-image: linear-gradient(-179deg, rgba(235,224,235,0.98) 0%, #b49f70 100%);*/
     /*background-image: url('Images/gplaypattern.png');*/
-    background-image: url('Images/subtle_zebra_3d.png');
+    /*background-image: url('Images/subtle_zebra_3d.png');*/
+    background-image: url('Images/tiledBackgroundSmall.png');
     background-repeat: repeat;
 }
 

@@ -1,0 +1,163 @@
+﻿@model MattAndRebeccaWedding.Models.RSVPs
+@{
+    ViewBag.Title = "GuestRespond";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+
+        function OpenConfirmModal() {
+            if ($('#radioBtnIsAttendingTrue').prop('checked') == true) {
+                $('#confirmIsAttending').html('Accept with pleasure');
+            }
+            else {
+                $('#confirmIsAttending').html('Decline with regret');
+            }
+
+            $('#cofirmNumPeopleAttending').html($('#textBoxNumPeopleAttending').val());
+            $('#cofirmNamesPeopleAttending').html($('#textBoxNamesPeopleAttending').val());
+            $('#cofirmComment').html($('#textBoxComment').val());
+        }
+    </script>
+}
+
+<h2>Please RSVP Below</h2>
+
+<div class="well addGuestContent">
+    @using (Html.BeginForm("GuestRespond", "RSVP", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.RsvpID)
+
+        <div class="row">
+            <div class="col-xs-3">
+                <h4>Invitees on this RSVP:</h4>
+            </div>
+            <div class="col-xs-4">
+                @foreach (var g in Model.guests)
+                {
+                    @Html.DisplayTextFor(model => g.firstName)
+                    @Html.Raw(" ")
+                    @Html.DisplayTextFor(model => g.lastName)
+                    <br />
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <h4>Accept with pleasure</h4>
+            </div>
+            <div class="col-xs-1">
+                @Html.RadioButtonFor(m => Model.isAttending, "true", htmlAttributes: new { id = "radioBtnIsAttendingTrue", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <h4>Decline with regret</h4>
+            </div>
+            <div class="col-xs-1">
+                @Html.RadioButtonFor(m => Model.isAttending, "false", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3">
+                <h4>Number of people attending:</h4>
+            </div>
+            <div class="col-xs-1">
+                @Html.TextBoxFor(m => Model.NumPeopleAttending, htmlAttributes: new { id = "textBoxNumPeopleAttending", @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3">
+                <h4>Names of people attending:</h4>
+            </div>
+            <div class="col-xs-6">
+                @Html.TextAreaFor(m => Model.NamesOfPeopleAttending, 3, 20, htmlAttributes: new { id = "textBoxNamesPeopleAttending", @class = "form-control", @style = "resize:none" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3">
+                <h4>RSVP Comments:</h4>
+            </div>
+            <div class="col-xs-6">
+                @Html.TextAreaFor(m => Model.rsvpComment, 4, 20, htmlAttributes: new { id = "textBoxComment", @class = "form-control", @style = "resize:none" })
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-info btn-lg" onclick="OpenConfirmModal()" data-toggle="modal" data-target="#confirmModal">Send RSVP</button>
+
+
+
+
+
+        <!-- Modal -->
+        <div id="confirmModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Are you sure you want to submit this RSVP?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                Guests:
+                            </div>
+                            <div class="col-xs-4">
+                                @foreach (var g in Model.guests)
+                                {
+                                    @Html.DisplayTextFor(model => g.firstName)
+                                    @Html.Raw(" ")
+                                    @Html.DisplayTextFor(model => g.lastName)
+                                    <br />
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label id="confirmIsAttending"></label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-md-5">
+                                Number of people attending:
+                            </div>
+                            <div id="cofirmNumPeopleAttending" class="col-xs-2">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-md-5">
+                                Names of people attending:
+                            </div>
+                            <div id="cofirmNamesPeopleAttending" class="col-xs-6">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-md-5">
+                                RSVP Comments:
+                            </div>
+                            <div id="cofirmComment" class="col-xs-6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Submit" class="btn btn-info" />
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -19,30 +19,30 @@ namespace MattAndRebeccaWedding.Controllers
         [HttpPost]
         public ActionResult AddGuest(Guest guest)
         {
-            bool shouldKeepGenerating = true;
-            string newID = rsvpIdGenerator.GetNewRsvpId();
-            while (shouldKeepGenerating)
-            {
-                if (DAL.CountStatement(SqlStatements.CheckIfRsvpIdExistsSQL(), SqlStatements.CheckIfRsvpIdExistsParameters(newID)) == 0)
-                {
-                    shouldKeepGenerating = false;
-                }
-                else
-                {
-                    newID = rsvpIdGenerator.GetNewRsvpId();
-                }
-            }
-            guest.RsvpId = newID;
-            if(DAL.InsertOrUpdate(SqlStatements.InsertNewGuestSQL(), SqlStatements.InsertOrUpdateGuestParameters(guest)) == 1)
-            {
-                ViewBag.SuccessMessage = "Guest successfully added: " + guest.Name;
-                return View();
-            }
-            else
-            {
-                ViewBag.FailureMessage = "Failed to add guest! Contact Zach!";
+            //bool shouldKeepGenerating = true;
+            //string newID = rsvpIdGenerator.GetNewRsvpId();
+            //while (shouldKeepGenerating)
+            //{
+            //    if (DAL.CountStatement(SqlStatements.CheckIfRsvpIdExistsSQL(), SqlStatements.CheckIfRsvpIdExistsParameters(newID)) == 0)
+            //    {
+            //        shouldKeepGenerating = false;
+            //    }
+            //    else
+            //    {
+            //        newID = rsvpIdGenerator.GetNewRsvpId();
+            //    }
+            //}
+            //guest.RsvpId = newID;
+            //if(DAL.InsertOrUpdate(SqlStatements.InsertNewGuestSQL(), SqlStatements.InsertOrUpdateGuestParameters(guest)) == 1)
+            //{
+            //    ViewBag.SuccessMessage = "Guest successfully added: " + guest.Name;
+            //    return View();
+            //}
+            //else
+            //{
+            //    ViewBag.FailureMessage = "Failed to add guest! Contact Zach!";
                 return View(guest);
-            }
+            //}
 
             
         }

@@ -15,20 +15,20 @@ namespace MattAndRebeccaWedding.Controllers
         // GET: EditGuest
         public ActionResult EditGuest(int guestID)
         {
-            using (DataTable dtGuest = DAL.SelectStatement(SqlStatements.SelectGuestByGuestIDSQL(), SqlStatements.SelectGuestByGuestIDParameters(guestID)))
-            {
-                if (dtGuest.Rows.Count > 0)
-                {
-                    Guest guest = new Guest(dtGuest.Rows[0]);
-                    return View(guest);
-                }
-                else
-                {
-                    // guest not found in database
-                    ViewBag.FailureMessage = "Guest Not Found. Contact Your Good Buddy Zach.";
+            //using (DataTable dtGuest = DAL.SelectStatement(SqlStatements.SelectGuestByGuestIDSQL(), SqlStatements.SelectGuestByGuestIDParameters(guestID)))
+            //{
+            //    if (dtGuest.Rows.Count > 0)
+            //    {
+            //        Guest guest = new Guest(dtGuest.Rows[0]);
+            //        return View(guest);
+            //    }
+            //    else
+            //    {
+            //        // guest not found in database
+            //        ViewBag.FailureMessage = "Guest Not Found. Contact Your Good Buddy Zach.";
                     return View();
-                }
-            }
+            //    }
+            //}
         }
 
         [HttpPost]
