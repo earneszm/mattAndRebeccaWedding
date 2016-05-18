@@ -35,32 +35,31 @@
         <div class="col-xs-12">
             <img src="~/Content/Images/lookUpRsvp.png" class="img-responsive center-block" />
         </div>
-
     </div>
 
     @using (Ajax.BeginForm("SearchRSVPs", "RSVP",
                     new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "searchResults" }))
     {
         <div class="row">
-            <div class="col-xs-5 col-sm-2 col-sm-offset-3 vCenter">
+            <div class="col-xs-12 col-sm-4 col-sm-offset-2 col-md-3 vCenter">
                 <h3>First Name:</h3>
             </div>
-            <div class="col-xs-7 col-sm-3 vCenter">
+            <div class="col-xs-12 col-sm-5 col-md-4 vCenter">
                 @Html.TextBox("firstName", null, new { id = "firstName", @class="form-control" })
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-offset-6">
+            <div class="col-xs-offset-4 col-sm-offset-6">
                 <h3 style="margin:0px;">And/Or</h3>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-5 col-sm-2 col-sm-offset-3 vCenter">
+            <div class="col-xs-12 col-sm-4 col-sm-offset-2 col-md-3 vCenter">
                 <h3>Last Name:</h3>
             </div>
-            <div class="col-xs-7 col-sm-3 vCenter">
+            <div class="col-xs-12 col-sm-5 col-md-4 vCenter">
                 @Html.TextBox("lastName", null, new { id = "lastName", @class = "form-control" })
             </div>
         </div>

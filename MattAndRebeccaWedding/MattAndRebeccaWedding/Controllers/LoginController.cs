@@ -29,7 +29,7 @@ namespace MattAndRebeccaWedding.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
-            if (user.UserPassword == "test" && user.UserName == "test")
+            if (user.UserPassword == "camp2008" && user.UserName == "admin")
             {
 
                 CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();
@@ -44,7 +44,7 @@ namespace MattAndRebeccaWedding.Controllers
                          1,
                          user.UserName,
                          DateTime.Now,
-                         DateTime.Now.AddMinutes(15),
+                         DateTime.Now.AddMinutes(1),
                          false,
                          userData);
 

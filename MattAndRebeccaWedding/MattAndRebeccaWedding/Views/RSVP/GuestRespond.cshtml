@@ -10,32 +10,72 @@
         });
 
         function OpenConfirmModal() {
+            // client side validation first
+            if (parseInt($('#textBoxNumPeopleAttending').val()) <= 0) {
+                $('#guestNumValidator').removeClass('forceHide');
+                return;
+            }
+            $('#guestNumValidator').addClass('forceHide');
+
             if ($('#radioBtnIsAttendingTrue').prop('checked') == true) {
-                $('#confirmIsAttending').html('Accept with pleasure');
+                $('#confirmIsAttending').html('Gladly Accept');
+
+                $('.notActiveOnDecline').show();
+                $('#cofirmNumPeopleAttending').html($('#textBoxNumPeopleAttending').val());
+                $('#cofirmNamesPeopleAttending').html($('#textBoxNamesPeopleAttending').val());
             }
             else {
                 $('#confirmIsAttending').html('Decline with regret');
+                $('.notActiveOnDecline').hide();
             }
 
-            $('#cofirmNumPeopleAttending').html($('#textBoxNumPeopleAttending').val());
-            $('#cofirmNamesPeopleAttending').html($('#textBoxNamesPeopleAttending').val());
+
             $('#cofirmComment').html($('#textBoxComment').val());
+            $('#confirmModal').modal('show');
         }
+
+        $('#radioBtnIsAttendingTrue').on('change', function () {
+            if ($(this).prop('checked') == true) {
+                $('#textBoxNumPeopleAttending').prop('disabled', false);
+                $('#textBoxNamesPeopleAttending').prop('disabled', false);
+                $('#textBoxNumPeopleAttending').val('');
+                $('#textBoxNamesPeopleAttending').val('');
+            }
+            $('#guestNumValidator').addClass('forceHide');
+        });
+
+        $('#radioBtnIsAttendingFalse').on('change', function () {
+            if ($(this).prop('checked') == true) {
+                $('#textBoxNumPeopleAttending').prop('disabled', true);
+                $('#textBoxNamesPeopleAttending').prop('disabled', true);
+                $('#textBoxNumPeopleAttending').val('');
+                $('#textBoxNamesPeopleAttending').val('');
+            }
+            $('#guestNumValidator').addClass('forceHide');
+        });
     </script>
 }
+
+
 
 <h2>Please RSVP Below</h2>
 
 <div class="well addGuestContent">
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-6">
+            <label id="guestNumValidator" class="forceHide">Please enter a valid # of guests attending.</label>
+        </div>
+    </div>
+
     @using (Html.BeginForm("GuestRespond", "RSVP", FormMethod.Post))
     {
         @Html.HiddenFor(model => model.RsvpID)
 
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-12 col-md-4 col-md-offset-2">
                 <h4>Invitees on this RSVP:</h4>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-12 col-sm-6">
                 @foreach (var g in Model.guests)
                 {
                     @Html.DisplayTextFor(model => g.firstName)
@@ -46,51 +86,54 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-3">
-                <h4>Accept with pleasure</h4>
+            <div class="col-xs-9 col-md-4 col-md-offset-2">
+                <h4>Gladly Accept</h4>
             </div>
-            <div class="col-xs-1">
+            <div class="col-xs-3 col-sm-1">
                 @Html.RadioButtonFor(m => Model.isAttending, "true", htmlAttributes: new { id = "radioBtnIsAttendingTrue", @class = "form-control" })
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-9 col-md-4 col-md-offset-2">
                 <h4>Decline with regret</h4>
             </div>
-            <div class="col-xs-1">
-                @Html.RadioButtonFor(m => Model.isAttending, "false", htmlAttributes: new { @class = "form-control" })
+            <div class="col-xs-3 col-sm-1">
+                @Html.RadioButtonFor(m => Model.isAttending, "false", htmlAttributes: new { id = "radioBtnIsAttendingFalse", @class = "form-control" })
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-3">
-                <h4>Number of people attending:</h4>
+            <div class="col-xs-12 col-md-4 col-md-offset-2">
+                <h4># of people attending:</h4>
             </div>
-            <div class="col-xs-1">
-                @Html.TextBoxFor(m => Model.NumPeopleAttending, htmlAttributes: new { id = "textBoxNumPeopleAttending", @class = "form-control" })
+            <div class="col-xs-6 col-sm-2">
+                @Html.TextBoxFor(m => Model.NumPeopleAttending, htmlAttributes: new { id = "textBoxNumPeopleAttending", @class = "form-control", @type = "number", @min = "1", @step = "1" })
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-3">
-                <h4>Names of people attending:</h4>
+            <div class="col-xs-12 col-md-4 col-md-offset-2">
+                <h4>Names of attendees:</h4>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
                 @Html.TextAreaFor(m => Model.NamesOfPeopleAttending, 3, 20, htmlAttributes: new { id = "textBoxNamesPeopleAttending", @class = "form-control", @style = "resize:none" })
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-12 col-md-4 col-md-offset-2">
                 <h4>RSVP Comments:</h4>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-md-6">
                 @Html.TextAreaFor(m => Model.rsvpComment, 4, 20, htmlAttributes: new { id = "textBoxComment", @class = "form-control", @style = "resize:none" })
             </div>
         </div>
 
-        <button type="button" class="btn btn-info btn-lg" onclick="OpenConfirmModal()" data-toggle="modal" data-target="#confirmModal">Send RSVP</button>
-
+        <div class="row">
+            <div class="col-md-offset-2">
+                <button type="button" class="btn btn-primary btn-lg" onclick="OpenConfirmModal()">Send RSVP</button>
+            </div>
+        </div>
 
 
 
@@ -107,10 +150,10 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-xs-2">
+                            <div class="col-xs-6 col-md-5">
                                 Guests:
                             </div>
-                            <div class="col-xs-4">
+                            <div class="col-xs-7">
                                 @foreach (var g in Model.guests)
                                 {
                                     @Html.DisplayTextFor(model => g.firstName)
@@ -122,22 +165,22 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-6">
+                            <div class="col-xs-12">
                                 <label id="confirmIsAttending"></label>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-xs-6 col-md-5">
-                                Number of people attending:
+                        <div class="row notActiveOnDecline">
+                            <div class="col-xs-8 col-md-5">
+                                # of people attending:
                             </div>
-                            <div id="cofirmNumPeopleAttending" class="col-xs-2">
+                            <div id="cofirmNumPeopleAttending" class="col-xs-4">
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row notActiveOnDecline">
                             <div class="col-xs-6 col-md-5">
-                                Names of people attending:
+                                Names of attendees:
                             </div>
                             <div id="cofirmNamesPeopleAttending" class="col-xs-6">
                             </div>
@@ -154,7 +197,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
                         <input type="submit" value="Submit" class="btn btn-info" />
-                        
+
                     </div>
                 </div>
             </div>

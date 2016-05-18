@@ -96,7 +96,7 @@ namespace MattAndRebeccaWedding.Controllers
             if (guestList.FirstOrDefault().hasRSVPed)
                 return View("AlreadyRSVPed");
 
-            RSVPs guestsOnThisRSVP = new RSVPs(guestList, 0);
+            RSVPs guestsOnThisRSVP = new RSVPs(guestList);
             guestsOnThisRSVP.SetUpForInitialRSVP();
 
             return View(guestsOnThisRSVP);

@@ -10,7 +10,7 @@ a{
     color: black;
     font-weight:bold;
     font-size:1.3em;
-    font-family: Lucida Calligraphy;
+    font-family:'Over the Rainbow', cursive;
 }
 
 a:hover{
@@ -63,4 +63,43 @@ a:hover{
 
 .nameSearchResults{
     font-size:1.3em;
+    padding-top:8px;
+    padding-bottom:5px;
+    border-bottom:1px solid black;
+}
+
+
+.carousel-caption{
+    top: 60%;
+    right:10%;
+    left:10%;
+transform: translateY(-50%);
+bottom: initial;
+text-align:center;
+}
+
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+ 
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+ 
+.btn-primary {
+    background: #0099cc;
+    color: #ffffff;
+}
+ 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #33a6cc;
+}
+ 
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
 }

@@ -1,0 +1,20 @@
+﻿<div class="row countDownRow">
+    <div class="col-xs-12 col-sm-7 col-md-5">
+        <img src="~/Content/Images/countDownSign.png" class="img-responsive" />
+        <div class="carousel-caption">
+            @if (DateTime.Today < DateTime.Parse("09/10/2016"))
+            {
+                double daysToWedding = (DateTime.Parse("09/10/2016") - DateTime.Today).TotalDays;
+                if (daysToWedding > 0)
+                {
+                    <label id="countDownText">@("OUR WEDDING IS IN " + daysToWedding + (daysToWedding > 1 ? " DAYS!" : " DAY!"))</label>
+                }
+                else if (daysToWedding == 0)
+                {
+                    <label id="countDownText">@("OUR WEDDING IS IN TODAY!"))</label>
+                }
+            }
+        </div>
+    </div>
+</div>
+

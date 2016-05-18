@@ -77,7 +77,7 @@ namespace MattAndRebeccaWedding
             {
                 return mycon.Query<Guests>
                 (@"select guestID, r.rsvpID, g.firstName, g.LastName, r.hasRSVPed, r.isAttending, r.numPeopleAttending, r.namesOfPeopleAttending, r.rsvpComment from tblguests g inner join tblrsvp r on g.rsvpID = r.rsvpID 
-                    order by r.rsvpID, g.lastName, g.firstName").ToList();
+                    order by r.rsvpID, g.sortOrderInRsvp").ToList();
             }
         }
 

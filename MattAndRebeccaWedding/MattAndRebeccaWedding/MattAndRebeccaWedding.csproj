@@ -274,6 +274,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
+    <Content Include="Content\Images\countDownSign.png" />
     <Content Include="Content\Images\fakePhoto.jpg" />
     <Content Include="Content\Images\flourish-31609_960_720.png" />
     <Content Include="Content\Images\gplaypattern.png" />
@@ -302,9 +303,12 @@
     <Content Include="Content\Images\NeodesheChurch.png" />
     <Content Include="Content\Images\paperBackground.jpg" />
     <Content Include="Content\Images\ring.jpeg" />
+    <Content Include="Content\Images\rsvpReceived.png" />
+    <Content Include="Content\Images\starsHeader.png" />
     <Content Include="Content\Images\subtle_zebra_3d.png" />
     <Content Include="Content\Images\tiledBackgroundSmall.png" />
     <Content Include="Content\Images\tyingTheKnot.png" />
+    <Content Include="Content\Images\weddingDetails.png" />
     <Content Include="Content\Images\Welcome.png" />
     <Content Include="Content\Images\White-Gradient-Squares.jpg" />
     <Content Include="Content\Images\wood_planks.jpg" />
@@ -406,6 +410,7 @@
     <Content Include="Views\RSVP\GuestRespond.cshtml" />
     <Content Include="Views\RSVP\RSVPSuccess.cshtml" />
     <Content Include="Views\RSVP\AlreadyRSVPed.cshtml" />
+    <Content Include="Views\Shared\_countdown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

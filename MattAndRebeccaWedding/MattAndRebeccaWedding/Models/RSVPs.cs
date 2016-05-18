@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -12,6 +13,8 @@ namespace MattAndRebeccaWedding.Models
         public List<Guests> guests { get; set; }
         public bool hasRSVPed { get; set; }
         public bool isAttending { get; set; }
+
+        [Range(1,99, ErrorMessage = "You must enter a correct number of guests.")]
         public int NumPeopleAttending { get; set; }
         public string NamesOfPeopleAttending { get; set; }
         public string rsvpComment { get; set; }
@@ -22,7 +25,7 @@ namespace MattAndRebeccaWedding.Models
                 if (hasRSVPed == false)
                     return "--";
                 else if (isAttending == true)
-                    return NumPeopleAttending + " attending";
+                    return NumPeopleAttending + (NumPeopleAttending > 1 ? " guests" : " guest");
                 else
                     return "Not Attending";
             }
@@ -44,9 +47,8 @@ namespace MattAndRebeccaWedding.Models
 
         }
 
-        public RSVPs(List<Guests> g, int displayNum)
+        public RSVPs(List<Guests> g)
         {
-            DisplayNum = displayNum;
             guests = new List<Guests>();
 
             if(g.Count > 0)
@@ -55,6 +57,7 @@ namespace MattAndRebeccaWedding.Models
                 hasRSVPed = g.FirstOrDefault().hasRSVPed;
                 isAttending = g.FirstOrDefault().isAttending;
                 NumPeopleAttending = g.FirstOrDefault().NumPeopleAttending;
+                NamesOfPeopleAttending = g.FirstOrDefault().NamesOfPeopleAttending;
                 rsvpComment = g.FirstOrDefault().rsvpComment;
             }
 

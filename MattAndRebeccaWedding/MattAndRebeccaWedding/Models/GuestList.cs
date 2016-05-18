@@ -12,12 +12,12 @@ namespace MattAndRebeccaWedding.Models
         public GuestList(List<Guests> guests)
         {
             rsvps = new List<RSVPs>();
+            List<RSVPs> tempRsvps = new List<RSVPs>();
 
             if (guests.Count > 0)
             {
                 List<Guests> tempList = new List<Guests>();
                 int counter = 0;
-                int guestNum = 0;
 
                 tempList.Add(guests.FirstOrDefault());
 
@@ -35,14 +35,20 @@ namespace MattAndRebeccaWedding.Models
                     }
                     else
                     {
-                        guestNum++;
-                        rsvps.Add(new RSVPs(tempList, guestNum));
+                        tempRsvps.Add(new RSVPs(tempList));
                         tempList.Clear();
                         tempList.Add(g);
                     }
                 }
-                guestNum++;
-                rsvps.Add(new RSVPs(tempList, guestNum));
+                tempRsvps.Add(new RSVPs(tempList));
+
+                rsvps = tempRsvps.OrderBy(x => x.guests.FirstOrDefault().lastName).ThenBy(x => x.guests.FirstOrDefault().firstName)
+                    .ToList();
+
+                for (int i = 0; i < rsvps.Count; i++)
+                {
+                    rsvps[i].DisplayNum = i + 1;
+                }
             }
         }
     }

@@ -17,6 +17,8 @@ namespace MattAndRebeccaWedding.Models
         public int NumPeopleAttending { get; set; }
         public string NamesOfPeopleAttending { get; set; }
         public string rsvpComment { get; set; }
+        public string fullName { get { return lastName + ", " + firstName; } }
+
 
         //public List<Guest> guestList;
 

@@ -2,53 +2,69 @@
 
 @{string rowColor = "rowNormalEven";
 
-    if (Model.isAttending)
+    if (Model.hasRSVPed)
     {
-        if (Model.isAttending == false)
+        if (Model.isAttending)
         {
-            rowColor = "rowNotAttending"; ;
+            rowColor = "rowAttending"; ;
         }
         else
         {
-            rowColor = "rowAttending";
+            rowColor = "rowNotAttending";
         }
     }
     else
     {
+
         //if (Model.GuestID % 2 == 1)
         //{
         //    rowColor = "rowNormalOdd";
         //}
     }
 
-    <div class="row rsvpGuestListRow @rowColor">
-        <div class="col-xs-1 vCenter">
-            @Html.DisplayTextFor(model => model.DisplayNum)
+    <div class="row @rowColor">
+        <div class="col-xs-12">
+            <div class="row rsvpGuestListRow">
+                <div class="col-xs-1">
+                    @Html.DisplayTextFor(model => model.DisplayNum)
+                </div>
+                <div class="col-xs-10 col-sm-4 col-md-4 vCenter">
+                    @foreach (var g in Model.guests)
+                    {
+                        @Html.DisplayTextFor(model => g.fullName)
+                        <br />
+                    }
+                </div>
+
+                @*<div class="col-md-3 hidden-inline-xs hidden-inline-sm vCenter">
+                        @Html.DisplayTextFor(model => model.hasRSVPed)
+                    </div>*@
+                <div class="col-xs-offset-2 col-xs-10 col-sm-offset-0 col-sm-2 col-md-2 vTop">
+                    @Html.DisplayTextFor(model => model.IsAttendingString)
+                </div>
+                <div class="col-xs-offset-2 col-xs-10 col-sm-offset-0 col-sm-4 col-md-4 vCenter">
+                    @Html.DisplayTextFor(model => model.NamesOfPeopleAttending)
+                </div>
+                @*<div class="col-xs-3">
+                       @Html.DisplayTextFor(model => model.CommentForEmailSent)
+                    </div>*@
+                @*<div class="col-xs-1 vCenter">
+                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("EditGuest", "EditGuest", new {guestID=Model.RsvpID})'">Select</button>
+                    </div*@
+            </div>
         </div>
-        <div class="col-xs-6 col-sm-4 col-md-3 vCenter">
-            @foreach (var g in Model.guests)
+        <div class="col-xs-12">
+            @if (!String.IsNullOrEmpty(Model.rsvpComment))
             {
-                @Html.DisplayTextFor(model => g.firstName)
-                @Html.Raw(" ")
-                @Html.DisplayTextFor(model => g.lastName)
-                 <br/> 
+                <div class="row rsvpGuestCommentRow">
+                    <div class="col-sm-3 col-sm-offset-2 col-md-2 hidden-inline-xs">
+                        @Html.Raw("RSVP Comment:")
+                    </div>
+                    <div class="col-xs-offset-1 col-xs-11 col-sm-offset-0 col-sm-7">
+                        @Html.DisplayTextFor(model => model.rsvpComment)
+                    </div>
+                </div>
             }
-            
-        </div>
-        @*<div class="col-md-3 hidden-inline-xs hidden-inline-sm vCenter">
-            @Html.DisplayTextFor(model => model.hasRSVPed)
-        </div>*@
-        <div class="col-sm-3 col-md-2 hidden-inline-xs vCenter">
-            @Html.DisplayTextFor(model => model.IsAttendingString)
-        </div>
-        <div class="col-sm-2 col-md-4 hidden-inline-xs vCenter">
-            @Html.DisplayTextFor(model => model.NamesOfPeopleAttending)
-        </div>
-        @*<div class="col-xs-3">
-               @Html.DisplayTextFor(model => model.CommentForEmailSent)
-            </div>*@
-        <div class="col-xs-1 vCenter">
-            @*<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("EditGuest", "EditGuest", new {guestID=Model.GuestID})'">Select</button>*@
         </div>
     </div>
 }
