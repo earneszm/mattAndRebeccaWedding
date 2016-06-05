@@ -24,15 +24,19 @@ body {
 
     body p {
         font-size: 1.5em;
+        font-family: 'Merriweather Sans', sans-serif;
     }
 
     body h1 {
         font-size: 5em;
         font-weight: bold;
         /*font-family: Broadway;*/
-        font-family: Lucida Calligraphy;
+        font-family: 'Merriweather Sans', sans-serif;
         color: black;
         text-shadow: 4px 2px 8px #262626;
+    }
+    body h2, h3{
+        font-family: 'Merriweather Sans', sans-serif;
     }
 
 /* Set padding to keep content from hitting the edges */
@@ -230,6 +234,11 @@ footer > p {
     box-shadow: 10px 10px 15px rgba(26, 26, 26, .9);
 }
 
+.imageSolidBorder{
+    border: 6px solid black;
+    border-radius: 5px;
+}
+
 .adminLoginTrackerOuter {
     margin: 0px;
     margin-top: -25px;
@@ -270,6 +279,9 @@ footer a {
     #countDownText {
         font-size: 0.9em;
     }
+    .contactEmail{
+        font-size:1.1em !important;
+}
 }
 
 @media (min-width:351px) and ( max-width: 430px) {
@@ -335,3 +347,42 @@ footer a {
 .forceHide{
     display:none;
 }
+
+.ourStoryDiv p {
+    padding-top:25px;
+}
+
+.weddingDetailsTravelDiv p {
+    padding-top:15px;
+    text-align:center;
+}
+
+.weddingDetailsSubHeading
+{
+    text-align:center;
+    font-family:'Over the Rainbow', cursive;
+    font-size:4em;
+    font-weight:bold;
+    padding-bottom:15px;
+    margin-left:0px !important;
+}
+
+.weddingDetailsTravelHeading{
+    text-align:center;
+    font-family:'Over the Rainbow', cursive;
+    font-size:3em;
+    font-weight:bold;
+    padding-bottom:15px;
+    margin-left:0px !important;
+}
+
+.registryContentDiv p{
+    padding-top:10px;    
+    text-align:center;
+    font-size:1.8em;
+}
+
+.registryContentDiv{
+    margin-bottom:40px;
+}
+
