@@ -18,14 +18,14 @@
             $('#guestNumValidator').addClass('forceHide');
 
             if ($('#radioBtnIsAttendingTrue').prop('checked') == true) {
-                $('#confirmIsAttending').html('Gladly Accept');
+                $('#confirmIsAttending').html('Graciously Accept');
 
                 $('.notActiveOnDecline').show();
                 $('#cofirmNumPeopleAttending').html($('#textBoxNumPeopleAttending').val());
                 $('#cofirmNamesPeopleAttending').html($('#textBoxNamesPeopleAttending').val());
             }
             else {
-                $('#confirmIsAttending').html('Decline with regret');
+                $('#confirmIsAttending').html('Regretfully Decline');
                 $('.notActiveOnDecline').hide();
             }
 
@@ -87,7 +87,7 @@
         </div>
         <div class="row">
             <div class="col-xs-9 col-md-4 col-md-offset-2">
-                <h4>Gladly Accept</h4>
+                <h4>Graciously Accept</h4>
             </div>
             <div class="col-xs-3 col-sm-1">
                 @Html.RadioButtonFor(m => Model.isAttending, "true", htmlAttributes: new { id = "radioBtnIsAttendingTrue", @class = "form-control" })
@@ -95,7 +95,7 @@
         </div>
         <div class="row">
             <div class="col-xs-9 col-md-4 col-md-offset-2">
-                <h4>Decline with regret</h4>
+                <h4>Regretfully Decline</h4>
             </div>
             <div class="col-xs-3 col-sm-1">
                 @Html.RadioButtonFor(m => Model.isAttending, "false", htmlAttributes: new { id = "radioBtnIsAttendingFalse", @class = "form-control" })
@@ -196,7 +196,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
-                        <input type="submit" value="Submit" class="btn btn-info" />
+                        <input type="submit" value="Submit" class="btn btn-primary" />
 
                     </div>
                 </div>

@@ -90,13 +90,13 @@ text-align:center;
     outline: 0 none;
 }
  
-.btn-primary {
-    background: #0099cc;
+.btn-primary{
+    background: #002147;
     color: #ffffff;
 }
  
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-    background: #33a6cc;
+    background: #0d3c72;
 }
  
 .btn-primary:active, .btn-primary.active {

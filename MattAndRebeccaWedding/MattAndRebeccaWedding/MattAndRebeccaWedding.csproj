@@ -275,7 +275,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
+    <Content Include="Content\Images\arrows.png" />
     <Content Include="Content\Images\countDownSign.png" />
+    <Content Include="Content\Images\countDownSign1.png" />
+    <Content Include="Content\Images\engagementHeaderResize.jpg" />
     <Content Include="Content\Images\Engagements-43-resized.jpg" />
     <Content Include="Content\Images\Engagements-65-resized.jpg" />
     <Content Include="Content\Images\fakePhoto.jpg" />
@@ -302,10 +305,11 @@
     <Content Include="Content\Images\lookUpRsvp.png" />
     <Content Include="Content\Images\mapWithArrow.png" />
     <Content Include="Content\Images\nameBanner.png" />
-    <Content Include="Content\Images\nameBannerWithLine.png" />
     <Content Include="Content\Images\nameCircle.png" />
+    <Content Include="Content\Images\nameHeaderFinal.png" />
     <Content Include="Content\Images\NeodesheChurch-resized.png" />
     <Content Include="Content\Images\NeodesheChurch.png" />
+    <Content Include="Content\Images\newChurch.jpg" />
     <Content Include="Content\Images\paperBackground.jpg" />
     <Content Include="Content\Images\photo5-resized.jpg" />
     <Content Include="Content\Images\photo6.jpg" />

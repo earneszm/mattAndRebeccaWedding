@@ -92,3 +92,4 @@ C:\Users\Zach\Documents\GitHub\mattAndRebeccaWedding\MattAndRebeccaWedding\MattA
 C:\Users\Zach\Documents\GitHub\mattAndRebeccaWedding\MattAndRebeccaWedding\MattAndRebeccaWedding\bin\System.Web.WebPages.Razor.xml
 C:\Users\Zach\Documents\GitHub\mattAndRebeccaWedding\MattAndRebeccaWedding\MattAndRebeccaWedding\obj\Debug\MattAndRebeccaWedding.dll
 C:\Users\Zach\Documents\GitHub\mattAndRebeccaWedding\MattAndRebeccaWedding\MattAndRebeccaWedding\obj\Debug\MattAndRebeccaWedding.pdb
+C:\Users\Zach\Documents\GitHub\mattAndRebeccaWedding\MattAndRebeccaWedding\MattAndRebeccaWedding\obj\Debug\MattAndRebeccaWedding.csprojResolveAssemblyReference.cache

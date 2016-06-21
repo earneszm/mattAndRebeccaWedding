@@ -99,7 +99,7 @@ where r.rsvpID = @rsvpID
             using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
             {
                 return mycon.Query<searchViewModel>
-                (@"select * from tblguests where  firstName like '%' + @firstName + '%' and lastName like '%' + @lastName +'%'",
+                (@"select * from tblguests g inner join tblRSVP r on g.rsvpID = r.rsvpID where  firstName like '%' + @firstName + '%' and lastName like '%' + @lastName +'%' and hasRSVPed != 1",
                     new { firstName = fName ?? "", lastName = lName ?? "" }).ToList();
             }
         }
