@@ -386,3 +386,7 @@ footer a {
     margin-bottom:40px;
 }
 
+.navBtnActive{
+    background-color: #ff99a0;
+}
+

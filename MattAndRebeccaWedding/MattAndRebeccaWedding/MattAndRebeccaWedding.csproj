@@ -242,6 +242,7 @@
     <Compile Include="Controllers\EditGuestController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\GrubarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -284,6 +285,7 @@
     <Content Include="Content\Images\fakePhoto.jpg" />
     <Content Include="Content\Images\flourish-31609_960_720.png" />
     <Content Include="Content\Images\gplaypattern.png" />
+    <Content Include="Content\Images\Grubar.jpg" />
     <Content Include="Content\Images\homeText.png" />
     <Content Include="Content\Images\Buttons\buttonNormal.png" />
     <Content Include="Content\Images\Buttons\homeButtonHover.png" />
@@ -306,7 +308,7 @@
     <Content Include="Content\Images\mapWithArrow.png" />
     <Content Include="Content\Images\nameBanner.png" />
     <Content Include="Content\Images\nameCircle.png" />
-    <Content Include="Content\Images\nameHeaderFinal.png" />
+    <Content Include="Content\Images\nameHeaderFinal1.png" />
     <Content Include="Content\Images\NeodesheChurch-resized.png" />
     <Content Include="Content\Images\NeodesheChurch.png" />
     <Content Include="Content\Images\newChurch.jpg" />
@@ -426,6 +428,7 @@
     <Content Include="Views\RSVP\RSVPSuccess.cshtml" />
     <Content Include="Views\RSVP\AlreadyRSVPed.cshtml" />
     <Content Include="Views\Shared\_countdown.cshtml" />
+    <Content Include="Views\Grubar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

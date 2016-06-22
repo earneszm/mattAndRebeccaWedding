@@ -23,12 +23,12 @@
         </div>
         <div class="headerContainer collapse navbar-collapse">
             <ul class="nav nav-justified">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("The Couple", "Index", "TheCouple")</li>
-                <li>@Html.ActionLink("Wedding Details", "Index", "WeddingDetails")</li>
-                <li>@Html.ActionLink("RSVP", "GuestRSVP", "RSVP")</li>
-                <li>@Html.ActionLink("Registry", "Index", "Registry")</li>
-                <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" ? "navBtnActive" : "")">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "TheCouple" ? "navBtnActive" : "")">@Html.ActionLink("The Couple", "Index", "TheCouple")</li>
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "WeddingDetails" ? "navBtnActive" : "")">@Html.ActionLink("Wedding Details", "Index", "WeddingDetails")</li>
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "RSVP" && ViewContext.RouteData.Values["action"].ToString() == "GuestRSVP" ? "navBtnActive" : "")">@Html.ActionLink("RSVP", "GuestRSVP", "RSVP")</li>
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Registry" ? "navBtnActive" : "")">@Html.ActionLink("Registry", "Index", "Registry")</li>
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Contact" ? "navBtnActive" : "")">@Html.ActionLink("Contact", "Index", "Contact")</li>
             </ul>
         </div>
     </nav>
