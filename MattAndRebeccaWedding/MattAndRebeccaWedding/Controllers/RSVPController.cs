@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using MattAndRebeccaWedding.Models;
 using MattAndRebeccaWedding.Utilities.CustomAuth;
+using System.Net.Mail;
+using System.Net;
 
 namespace MattAndRebeccaWedding.Controllers
 {
@@ -108,9 +110,54 @@ namespace MattAndRebeccaWedding.Controllers
             rsvps.hasRSVPed = true;
 
             if (DAL.UpdateRSVP(rsvps) == 1)
+            {
+                SendEmail(rsvps);
                 return View("RSVPSuccess");
+            }
             else
                 throw new Exception();
+        }
+
+        private void SendEmail(RSVPs rsvps)
+        {
+            SmtpClient smtpClient = new SmtpClient();
+            try
+            {
+                smtpClient.Host = System.Configuration.ConfigurationManager.AppSettings["SMTPserver"];
+                smtpClient.Port = 25;
+                //smtpClient.Timeout = 10000;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential("admin@mattplusrebecca.com", "plastik5");
+
+                //String bodyText = fvm.ContactNumber + "\n" + fvm.EmailAddress + "\n" + fvm.FirstName + " " + fvm.LastName + "\n" + fvm.Comments;
+
+                List<Guests> guestList = DAL.GetGuestsByID(rsvps.RsvpID.ToString());
+
+                string fullGuestNames = "";
+                foreach(var g in guestList)
+                {
+                    fullGuestNames += g.firstName + " " + g.lastName + " ";
+                }
+
+                string guestRSVPing = guestList.FirstOrDefault().firstName + " " + guestList.FirstOrDefault().lastName;
+                
+                string subject = guestRSVPing + " RSVP!";
+                string body = "Names: " + fullGuestNames + "\n" +
+                              "rsvpID: " + rsvps.RsvpID + "\n" +
+                              "isAttending: " + (rsvps.isAttending ? "Yes" : "No") + "\n" +
+                              "numPeopleAttending: " + rsvps.NumPeopleAttending + "\n" +
+                              "namesOfPeopleAttending: " + rsvps.NamesOfPeopleAttending + "\n" +
+                              "rsvpComment: " + rsvps.rsvpComment;
+
+                MailMessage mailMessage = new MailMessage("noreply@mattplusrebecca.com", "zach.earnest@gmail.com", subject, body);
+                //mailMessage.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+
+                smtpClient.Send(mailMessage);
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

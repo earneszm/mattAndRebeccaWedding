@@ -32,7 +32,7 @@ namespace MattAndRebeccaWedding.Controllers
 
                 //String bodyText = fvm.ContactNumber + "\n" + fvm.EmailAddress + "\n" + fvm.FirstName + " " + fvm.LastName + "\n" + fvm.Comments;
 
-                MailMessage mailMessage = new MailMessage("noreply@test.com", "zach.earnest@gmail.com", "subject", "testing");
+                MailMessage mailMessage = new MailMessage("noreply@mattplusrebecca.com", "zach.earnest@gmail.com", "subject", "testing");
                 //mailMessage.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
                 smtpClient.Send(mailMessage);

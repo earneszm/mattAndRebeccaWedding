@@ -94,6 +94,18 @@ where r.rsvpID = @rsvpID
             }
         }
 
+        public static List<Guests> GetGuestsByID(string rsvpID)
+        {
+            using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
+            {
+                return mycon.Query<Guests>
+                (@"select guestID, firstName, LastName from tblguests  
+where rsvpID = @rsvpID
+                    order by sortOrderInRsvp",
+                    new { rsvpID = rsvpID }).ToList();
+            }
+        }
+
         public static List<searchViewModel> SearchRSVPs(string fName, string lName)
         {
             using (SqlConnection mycon = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnection"].ConnectionString))
