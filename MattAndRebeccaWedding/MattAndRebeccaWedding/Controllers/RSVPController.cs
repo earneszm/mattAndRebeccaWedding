@@ -86,6 +86,8 @@ namespace MattAndRebeccaWedding.Controllers
 
         public PartialViewResult SearchRSVPs (string firstName, string lastName)
         {
+            firstName = firstName.Trim();
+            lastName = lastName.Trim();
             List<searchViewModel> searchResults = DAL.SearchRSVPs(firstName, lastName);
 
             return PartialView("_rsvpSearch", searchResults);
