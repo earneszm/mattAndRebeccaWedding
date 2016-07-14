@@ -27,8 +27,9 @@
     </main>
 
     <footer>        
-        <p>@Html.Partial("_footer")</p>
-        <p>&copy; @DateTime.Now.Year</p>
+        @*<p>@Html.Partial("_footer")</p>*@
+        
+        <p><a style="font-family: 'Merriweather Sans',sans-serif" href='@Url.Action("Login", "Login")'>&copy;</a> @DateTime.Now.Year</p>
     </footer>
     
 
